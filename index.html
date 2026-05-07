@@ -197,29 +197,29 @@
   .forum-arrow { position:absolute; bottom:1.2rem; right:1.5rem; color:var(--cyan); font-size:1.2rem; opacity:0; transform:translateX(-6px); transition:all 0.3s; }
 
   /* ── VIDEO DETAIL ── */
-  #video-detail { display:none; min-height:100vh; padding-top:64px; animation:fadeIn 0.4s ease; }
-  #video-detail.active { display:block; }
   #forum-detail { display:none; min-height:100vh; padding-top:64px; animation:fadeIn 0.4s ease; }
   #forum-detail.active { display:block; }
+  #notice-detail { display:none; min-height:100vh; padding-top:64px; animation:fadeIn 0.4s ease; }
+  #notice-detail.active { display:block; }
   .video-grid-display { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.5rem; }
-  .vcard { background:var(--dark-card); border:1px solid var(--border); overflow:hidden; transition:all 0.3s; cursor:pointer; }
-  .vcard:hover { border-color:rgba(96,165,250,0.45); transform:translateY(-3px); }
-  .vcard-thumb { width:100%; aspect-ratio:16/9; background:linear-gradient(135deg,rgba(37,99,235,0.35),rgba(124,58,237,0.3)); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
-  .vcard-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
-  .vcard-thumb-placeholder { display:flex; flex-direction:column; align-items:center; gap:0.5rem; color:var(--text-muted); font-size:0.8rem; }
-  .vcard-play-overlay { position:absolute; inset:0; background:rgba(15,23,42,0.4); display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity 0.3s; }
-  .vcard:hover .vcard-play-overlay { opacity:1; }
-  .vcard-play-btn { width:52px; height:52px; border-radius:50%; background:rgba(37,99,235,0.85); border:2px solid var(--cyan); display:flex; align-items:center; justify-content:center; font-size:1.2rem; }
-  .vcard-info { padding:1rem 1.2rem; }
-  .vcard-title { font-family:'Noto Serif SC',serif; font-size:0.88rem; color:#ffffff; margin-bottom:0.4rem; line-height:1.5; font-weight:500; }
   .vcard-meta { font-size:0.75rem; color:var(--text-muted); line-height:1.5; }
 
-  /* modal */
-  .video-modal { display:none; position:fixed; inset:0; z-index:2000; background:rgba(0,0,0,0.85); align-items:center; justify-content:center; }
-  .video-modal.open { display:flex; }
-  .modal-inner { width:90%; max-width:900px; position:relative; background:var(--dark-mid); border:1px solid var(--border); }
-  .modal-close { position:absolute; top:-2.5rem; right:0; background:none; border:none; color:var(--white); font-size:1.5rem; cursor:pointer; padding:0.5rem; }
-  .modal-inner iframe { width:100%; aspect-ratio:16/9; border:none; display:block; }
+  /* ── 云论坛视频列表 ── */
+  .cv-row { display:flex; align-items:center; gap:1rem; padding:0.85rem 1rem; border-bottom:1px solid var(--border); text-decoration:none; transition:background 0.15s; cursor:pointer; }
+  .cv-row:hover { background:rgba(37,99,235,0.06); }
+  .cv-idx { flex-shrink:0; width:2.5rem; font-family:'Cormorant Garamond',serif; font-size:0.95rem; color:var(--text-muted); text-align:right; }
+  .cv-name { flex-shrink:0; min-width:5rem; font-family:'Noto Serif SC',serif; font-size:0.86rem; color:#fff; font-weight:600; }
+  .cv-school { flex-shrink:0; min-width:9rem; font-size:0.78rem; color:var(--cyan); }
+  .cv-title { flex:1; font-size:0.82rem; color:var(--off-white); line-height:1.55; min-width:0; }
+  .cv-icon { flex-shrink:0; font-size:0.75rem; color:var(--text-muted); transition:color 0.15s, transform 0.15s; }
+  .cv-row:hover .cv-icon { color:var(--cyan-light); transform:translateX(3px); }
+  .cv-hl { color:#fbbf24; background:rgba(251,191,36,0.08); padding:0 2px; }
+  @media (max-width: 700px) {
+    .cv-row { flex-wrap:wrap; gap:0.4rem 0.7rem; padding:0.8rem; }
+    .cv-idx { width:auto; min-width:1.5rem; }
+    .cv-school { min-width:0; }
+    .cv-title { flex-basis:100%; padding-left:0; }
+  }
 
   /* ── TRIBUTE ── */
   .tribute-hero-text { font-family:'Noto Serif SC',serif; font-size:clamp(0.9rem,1.8vw,1.05rem); color:rgba(219,234,254,0.85); line-height:2.2; max-width:800px; margin-bottom:3rem; border-left:2px solid var(--purple-light); padding-left:1.5rem; }
@@ -232,8 +232,8 @@
 
   /* ── NOTICES ── */
   .notice-list { display:flex; flex-direction:column; gap:1rem; }
-  .notice-item { display:flex; gap:1.5rem; align-items:flex-start; background:var(--dark-card); border:1px solid var(--border); padding:1.5rem; transition:border-color 0.3s; cursor:pointer; }
-  .notice-item:hover { border-color:rgba(96,165,250,0.4); }
+  .notice-item { display:flex; gap:1.5rem; align-items:flex-start; background:var(--dark-card); border:1px solid var(--border); padding:1.5rem; transition:all 0.25s; cursor:pointer; }
+  .notice-item:hover { border-color:rgba(96,165,250,0.5); transform:translateY(-2px); }
   .notice-item.pinned { border-left:3px solid var(--purple-light); }
   .notice-date { flex-shrink:0; text-align:center; min-width:52px; background:rgba(37,99,235,0.45); padding:0.5rem; }
   .notice-date .day { font-family:'Cormorant Garamond',serif; font-size:1.6rem; line-height:1; color:var(--white); display:block; }
@@ -364,33 +364,49 @@
 
     <div class="day-panel active" id="day-0">
       <div class="agenda-item"><div class="agenda-time">09:00 – 22:00</div><div class="agenda-content"><h4>报到注册（全天）</h4><p>杭州百瑞运河大饭店一楼大厅 · 领取会议手册、胸卡、餐券</p><span class="agenda-tag">注册</span></div></div>
-      <div class="agenda-item"><div class="agenda-time">14:00 – 17:00</div><div class="agenda-content"><h4>圆桌派</h4><p>资深学者与青年学者跨代对话，共话学科传承与创新</p><span class="agenda-tag">圆桌</span></div></div>
-      <div class="agenda-item"><div class="agenda-time">17:00 – 20:00</div><div class="agenda-content"><h4>欢迎晚宴</h4><p>凭券自助晚餐</p><span class="agenda-tag">社交</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">15:00 – 17:00</div><div class="agenda-content"><h4>大咖圆桌派</h4><p>资深学者与青年学者跨代对话，共话学科传承与创新</p><span class="agenda-tag">圆桌</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">17:00 – 20:00</div><div class="agenda-content"><h4>自助晚餐</h4><p>凭券自助晚餐</p><span class="agenda-tag">社交</span></div></div>
     </div>
 
     <div class="day-panel" id="day-1">
-      <div class="agenda-item"><div class="agenda-time">07:00 – 09:00</div><div class="agenda-content"><h4>现场报到</h4><p>杭州百瑞运河大饭店一楼大厅</p><span class="agenda-tag">注册</span></div></div>
-      <div class="agenda-item"><div class="agenda-time">09:00 – 09:15</div><div class="agenda-content"><h4>开幕式及领导致辞</h4><p></p><span class="agenda-tag">开幕</span></div></div>
-      <div class="agenda-item"><div class="agenda-time">09:15 – 09:30</div><div class="agenda-content"><h4>全体合影</h4><p></p></div></div>
-      <div style="margin:1.5rem 0 0.8rem;padding:0.5rem 1rem;background:rgba(37,99,235,0.15);border-left:2px solid var(--blue-bright);font-size:0.8rem;color:var(--cyan);font-weight:600;letter-spacing:0.05em;">主论坛（主会场）</div>
-      <div class="agenda-item"><div class="agenda-time">09:30 – 10:30<br><span style="font-size:0.72rem;color:var(--text-muted);">上半场</span></div><div class="agenda-content"><h4>主旨报告</h4><p>主持人：王小合（杭州师范大学）</p><p style="margin-top:0.4rem;">· 郭熙铜 教授（哈尔滨工业大学）<br>· 王冬 教授（南方医科大学）</p><span class="agenda-tag">主旨</span></div></div>
-      <div class="agenda-item"><div class="agenda-time">10:00 – 10:15</div><div class="agenda-content"><h4>茶歇</h4><p></p></div></div>
-      <div class="agenda-item"><div class="agenda-time">10:45 – 12:00<br><span style="font-size:0.72rem;color:var(--text-muted);">下半场</span></div><div class="agenda-content"><h4>主旨报告</h4><p>主持人：张研（华中科技大学）</p><p style="margin-top:0.4rem;">· 简伟研 研究员（北京大学）<br>· 胡敏 教授（复旦大学）<br>· 方恺（浙江大学）</p><span class="agenda-tag">主旨</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">07:00 – 12:00</div><div class="agenda-content"><h4>现场报到</h4><p>杭州百瑞运河大饭店一楼大厅</p><span class="agenda-tag">注册</span></div></div>
+      <div style="margin:1.5rem 0 0.8rem;padding:0.5rem 1rem;background:rgba(37,99,235,0.15);border-left:2px solid var(--blue-bright);font-size:0.8rem;color:var(--cyan);font-weight:600;letter-spacing:0.05em;">开幕式（百瑞国际大酒店2F国际厅 · 主持人：王小合）</div>
+      <div class="agenda-item"><div class="agenda-time">09:00 – 09:05</div><div class="agenda-content"><h4>校领导致辞</h4><p>杭州师范大学校领导致辞</p><span class="agenda-tag">开幕</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">09:05 – 09:10</div><div class="agenda-content"><h4>大会总顾问致辞</h4><p>张亮 教授（武汉大学政治与公共管理学院）</p><span class="agenda-tag">开幕</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">09:10 – 09:30</div><div class="agenda-content"><h4>全体合影</h4><p></p></div></div>
+      <div style="margin:1.5rem 0 0.8rem;padding:0.5rem 1rem;background:rgba(37,99,235,0.15);border-left:2px solid var(--blue-bright);font-size:0.8rem;color:var(--cyan);font-weight:600;letter-spacing:0.05em;">主论坛 · 第一环节（主持人：李程跃 · 复旦大学）</div>
+      <div class="agenda-item"><div class="agenda-time">09:30 – 10:00</div><div class="agenda-content"><h4>数智技术驱动的医疗健康管理研究</h4><p>郭熙铜 教授 · 哈尔滨工业大学（深圳）国际商学院执行院长，电子健康研究所所长</p><span class="agenda-tag">主旨</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">10:00 – 10:30</div><div class="agenda-content"><h4>卫生政策与管理自主知识体系的研究实践——以"医院帮扶评价研究"为例</h4><p>王 冬 教授 · 南方医科大学党委常委、副校长</p><span class="agenda-tag">主旨</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">10:30 – 10:40</div><div class="agenda-content"><h4>中场交流与茶歇</h4><p></p></div></div>
+      <div style="margin:1.5rem 0 0.8rem;padding:0.5rem 1rem;background:rgba(37,99,235,0.15);border-left:2px solid var(--blue-bright);font-size:0.8rem;color:var(--cyan);font-weight:600;letter-spacing:0.05em;">主论坛 · 第二环节（主持人：张研 · 华中科技大学）</div>
+      <div class="agenda-item"><div class="agenda-time">10:40 – 11:05</div><div class="agenda-content"><h4>卫管事业管理学科发展前沿和展望——对研究范式变革的观察</h4><p>简伟研 研究员 · 北京大学公共卫生学院</p><span class="agenda-tag">主旨</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">11:05 – 11:30</div><div class="agenda-content"><h4>走进"情境实验室"：为卫生治理寻找更优解</h4><p>胡 敏 教授 · 复旦大学公共卫生学院</p><span class="agenda-tag">主旨</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">11:30 – 11:55</div><div class="agenda-content"><h4>低碳治理工具的经济社会和健康影响</h4><p>方 恺 教授 · 浙江大学求是特聘教授，公共管理学院副院长</p><span class="agenda-tag">主旨</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">11:55 – 12:00</div><div class="agenda-content"><h4>感受与分享</h4><p>周忠良 二级教授 · 西安交通大学公共政策与管理学院院长</p><span class="agenda-tag">分享</span></div></div>
       <div class="agenda-item"><div class="agenda-time">12:00 – 13:00</div><div class="agenda-content"><h4>午餐</h4><p>凭餐券用餐</p></div></div>
       <div style="margin:1.5rem 0 0.8rem;padding:0.5rem 1rem;background:rgba(37,99,235,0.15);border-left:2px solid var(--blue-bright);font-size:0.8rem;color:var(--cyan);font-weight:600;letter-spacing:0.05em;">平行分论坛（13:00 – 16:00，六会场同期进行）</div>
-      <div class="agenda-item"><div class="agenda-time">13:00 – 14:15<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛一</span></div><div class="agenda-content"><h4>卫生政策：守正固本与制度致远 · 上半场特邀报告</h4><p>主持人：李佳佳（山东大学）· 点评：孙梅（复旦大学）<br>· 张雨萌（四川大学）· 陈晨（武汉大学）· 刘欢（哈尔滨医科大学）</p><span class="agenda-tag">分论坛</span></div></div>
-      <div class="agenda-item"><div class="agenda-time">14:25 – 15:45<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛一</span></div><div class="agenda-content"><h4>卫生政策：守正固本与制度致远 · 下半场投稿报告</h4><p>主持人：荣超（浙江中医药大学）· 点评：曾雁冰（首都医科大学）</p><span class="agenda-tag">分论坛</span></div></div>
-      <div class="agenda-item"><div class="agenda-time">13:00 – 14:15<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛二</span></div><div class="agenda-content"><h4>健康治理：数智驱动与协同善治 · 上半场特邀报告</h4><p>主持人：傅虹桥（北京大学）· 点评：周成超（山东大学）<br>· 徐晨婕（杭州师范大学）· 李忠（南京医科大学）· 赵步天（北京中医药大学）</p><span class="agenda-tag">分论坛</span></div></div>
-      <div class="agenda-item"><div class="agenda-time">14:25 – 15:45<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛二</span></div><div class="agenda-content"><h4>健康治理：数智驱动与协同善治 · 下半场投稿报告</h4><p>主持人：李浩淼（武汉大学）· 点评：陈鸣声（南京医科大学）</p><span class="agenda-tag">分论坛</span></div></div>
-      <div class="agenda-item"><div class="agenda-time">13:00 – 14:15<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛三</span></div><div class="agenda-content"><h4>健康产业：人群健康与融合创新 · 上半场特邀报告</h4><p>主持人：黄友良（北京中医药大学）· 点评：周忠良（西安交通大学）<br>· 白忠良（安徽医科大学）· 蒋姝函（浙江中医药大学）· 蒋宛彦含（成都中医药大学）· 王璐颖（中国药科大学）</p><span class="agenda-tag">分论坛</span></div></div>
-      <div class="agenda-item"><div class="agenda-time">14:25 – 15:45<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛三</span></div><div class="agenda-content"><h4>健康产业：人群健康与融合创新 · 下半场投稿报告</h4><p>主持人：陈春（温州医科大学）· 点评：王皓翔（中山大学）</p><span class="agenda-tag">分论坛</span></div></div>
-      <div class="agenda-item"><div class="agenda-time">13:00 – 14:15<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛四</span></div><div class="agenda-content"><h4>前沿探索：范式探新与边界拓展 · 上半场特邀报告</h4><p>主持人：林小军（四川大学）· 点评：陈任（安徽医科大学）<br>· 高婷婷（山东大学）· 刘晨曦（华中科技大学）· 陆姣（西安交通大学）</p><span class="agenda-tag">分论坛</span></div></div>
-      <div class="agenda-item"><div class="agenda-time">14:25 – 15:45<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛四</span></div><div class="agenda-content"><h4>前沿探索：范式探新与边界拓展 · 下半场投稿报告</h4><p>主持人：待定 · 点评：待定</p><span class="agenda-tag">分论坛</span></div></div>
-      <div class="agenda-item"><div class="agenda-time">13:00 – 15:45<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛五</span></div><div class="agenda-content"><h4>后浪严选：精研甄萃与新知遴选</h4><p>上半场点评：康正（哈尔滨医科大学）<br>下半场点评：殷晓旭（华中科技大学）</p><span class="agenda-tag">分论坛</span></div></div>
-      <div class="agenda-item"><div class="agenda-time">13:00 – 15:45<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛六</span></div><div class="agenda-content"><h4>青椒心声：躬行求真与学思辨析</h4><p>上半场引导嘉宾：黄奕祥（中山大学）、李莉（浙大城市学院）<br>下半场引导嘉宾：井淇（山东第二医科大学）、朱斌（南方科技大学）</p><span class="agenda-tag">分论坛</span></div></div>
-      <div style="margin:1.5rem 0 0.8rem;padding:0.5rem 1rem;background:rgba(37,99,235,0.15);border-left:2px solid var(--blue-bright);font-size:0.8rem;color:var(--cyan);font-weight:600;letter-spacing:0.05em;">闭幕式</div>
-      <div class="agenda-item"><div class="agenda-time">17:00 – 19:00</div><div class="agenda-content"><h4>闭幕式（主会场）</h4><p>主持人：王欣（中山大学）<br>会议总结 · 优秀论文公布与颁奖 · 十年致敬 · 致谢</p><span class="agenda-tag">闭幕</span></div></div>
-      <div class="agenda-item"><div class="agenda-time">19:00 – 21:30</div><div class="agenda-content"><h4>会场晚宴</h4><p></p><span class="agenda-tag">社交</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">13:00 – 14:15<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛一</span></div><div class="agenda-content"><h4>卫生政策：守正固本与制度致远 · 第一环节</h4><p>主持人：李佳佳（山东大学）· 点评人：孙梅（复旦大学）<br>· 张雨萌（四川大学）· 陈晨（武汉大学）· 刘欢（哈尔滨医科大学）</p><span class="agenda-tag">分论坛</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">14:30 – 15:50<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛一</span></div><div class="agenda-content"><h4>卫生政策：守正固本与制度致远 · 第二环节</h4><p>主持人：荣超（浙江中医药大学）· 点评人：王春平（山东第二医科大学）<br>· 郑韵婷（福建医科大学）· 罗明志（四川大学）· 邢怡青（郑州大学）· 蒋俊男（中南财经政法大学）</p><span class="agenda-tag">分论坛</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">13:00 – 14:15<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛二</span></div><div class="agenda-content"><h4>健康治理：数智驱动与协同善治 · 第一环节</h4><p>主持人：何国忠（昆明医科大学）· 点评人：周成超（山东大学）<br>· 牛奔（深圳大学）· 徐晨婕（杭州师范大学）· 李忠（南京医科大学）</p><span class="agenda-tag">分论坛</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">14:30 – 15:50<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛二</span></div><div class="agenda-content"><h4>健康治理：数智驱动与协同善治 · 第二环节</h4><p>主持人：荣超（浙江中医药大学）· 点评人：王春平（山东第二医科大学）<br>· 刘利（中国医科大学）· 涂斯婧（广西中医药大学）· 赵步天（北京中医药大学）· 谢涛（武汉大学）</p><span class="agenda-tag">分论坛</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">13:00 – 14:15<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛三</span></div><div class="agenda-content"><h4>健康产业：人群健康与融合创新 · 第一环节</h4><p>主持人：苗豫东（郑州大学）· 点评人：张持晨(南方医科大学）<br>· 白忠良（安徽医科大学）· 蒋姝函（浙江中医药大学）· 蒋宛彦含（成都中医药大学）</p><span class="agenda-tag">分论坛</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">14:30 – 15:50<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛三</span></div><div class="agenda-content"><h4>健康产业：人群健康与融合创新 · 第二环节</h4><p>主持人：王皓翔（中山大学）· 点评人：陈春（温州医科大学）<br>· 张淑娥（哈尔滨医科大学）· 叶欣（复旦大学）· 王璐颖（中国药科大学）· 龙成旭（华中科技大学）</p><span class="agenda-tag">分论坛</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">13:00 – 14:15<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛四</span></div><div class="agenda-content"><h4>前沿探索：范式探新与边界拓展 · 第一环节</h4><p>主持人：杨练（成都中医药大学）· 点评人：石昕（中国医科大学）<br>· 高婷婷（山东大学）· 刘晨曦（华中科技大学）· 陆姣（西安交通大学）</p><span class="agenda-tag">分论坛</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">14:30 – 15:50<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛四</span></div><div class="agenda-content"><h4>前沿探索：范式探新与边界拓展 · 第二环节</h4><p>主持人：熊巨洋（华中科技大学）· 点评人：陈任（安徽医科大学）<br>· 王旸（深圳大学）· 曹丹（西安建筑科技大学）· 史钊（山东大学）· 苏岱（首都医科大学）</p><span class="agenda-tag">分论坛</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">13:00 – 14:15<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛五</span></div><div class="agenda-content"><h4>后浪严选：精研甄萃与新知遴选 · 第一环节</h4><p>主持人：曾雁冰（首都医科大学）· 点评人：康正（哈尔滨医科大学）<br>· 冯红红（中山大学）· 蔡高成（深圳大学）· 王权（北京大学）</p><span class="agenda-tag">分论坛</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">14:30 – 15:50<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛五</span></div><div class="agenda-content"><h4>后浪严选：精研甄萃与新知遴选 · 第二环节</h4><p>主持人：林小军（四川大学）· 点评人：殷晓旭（华中科技大学）<br>· 高一冉（哈尔滨医科大学）· 罗京京（山东大学）· 王晨舟（华中科技大学）· 顾念（中南大学）</p><span class="agenda-tag">分论坛</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">13:00 – 14:20<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛六</span></div><div class="agenda-content"><h4>青椒心声：躬行求真与学思辨析 · 第一环节</h4><p>主持人：刘文彬（福建医科大学）<br>· 黄奕祥 教授（中山大学）· 李莉 教授（浙大城市学院）· 互动交流</p><span class="agenda-tag">分论坛</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">14:30 – 15:50<br><span style="font-size:0.72rem;color:var(--text-muted);">分论坛六</span></div><div class="agenda-content"><h4>青椒心声：躬行求真与学思辨析 · 第二环节</h4><p>主持人：王欣（中山大学）<br>· 井淇 教授（山东第二医科大学）· 朱斌 助理教授（南方科技大学）· 互动交流</p><span class="agenda-tag">分论坛</span></div></div>
+      <div style="margin:1.5rem 0 0.8rem;padding:0.5rem 1rem;background:rgba(37,99,235,0.15);border-left:2px solid var(--blue-bright);font-size:0.8rem;color:var(--cyan);font-weight:600;letter-spacing:0.05em;">闭幕式（百瑞国际大酒店2F国际厅 · 主持人：孙涛 · 杭州师范大学）</div>
+      <div class="agenda-item"><div class="agenda-time">17:00 – 17:20</div><div class="agenda-content"><h4>分论坛总结</h4><p></p><span class="agenda-tag">闭幕</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">17:20 – 17:25</div><div class="agenda-content"><h4>投稿情况汇报</h4><p>周思宇 副教授 · 杭州师范大学公共管理学院</p><span class="agenda-tag">闭幕</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">17:25 – 17:30</div><div class="agenda-content"><h4>《从一秩到久远：卫健政策因青年而新》宣传片发布</h4><p></p><span class="agenda-tag">闭幕</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">17:30 – 17:40</div><div class="agenda-content"><h4>学术大会优秀论文颁奖</h4><p></p><span class="agenda-tag">颁奖</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">17:40 – 17:50</div><div class="agenda-content"><h4>云论坛优秀论文颁奖</h4><p></p><span class="agenda-tag">颁奖</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">17:50 – 18:00</div><div class="agenda-content"><h4>《致敬十载芳华，启幕未来新章》启动仪式</h4><p></p><span class="agenda-tag">仪式</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">18:00 – 18:10</div><div class="agenda-content"><h4>授旗仪式</h4><p>王小合 教授（杭州师范大学公共管理学院院长）<br>王春平 教授（山东第二医科大学公共卫生学院院长）</p><span class="agenda-tag">仪式</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">18:10 – 18:20</div><div class="agenda-content"><h4>闭幕总结</h4><p>吕军 教授 · 大会总顾问 · 复旦大学公共卫生学院</p><span class="agenda-tag">闭幕</span></div></div>
+      <div class="agenda-item"><div class="agenda-time">18:20 – 20:00</div><div class="agenda-content"><h4>会场晚宴</h4><p></p><span class="agenda-tag">社交</span></div></div>
     </div>
   </div>
   <footer><div class="footer-inner"><p class="footer-title">2026健康政策与管理青年学者学术大会</p><div class="footer-divider"></div><p>© 2026 健康政策与管理青年学者学术大会组委会 · 承办：杭州师范大学公共管理学院</p></div></footer>
@@ -400,9 +416,30 @@
 <section id="speakers" class="section">
   <div class="page-hero"><div class="page-hero-inner"><div class="page-tag">演讲嘉宾</div><h1 class="page-title">嘉宾及主讲人简介</h1></div></div>
   <div class="page-body">
-    <div style="margin-bottom:0.8rem;padding:0.8rem 1.2rem;background:rgba(37,99,235,0.1);border-left:2px solid var(--blue);font-size:0.8rem;color:var(--text-muted);">以下嘉宾名单为初步确认，最终名单以正式通知为准。</div>
 
     <h2 class="section-heading" style="font-size:1rem;">主论坛嘉宾</h2>
+    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
+        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">李</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">李程跃</p>
+            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">主论坛 主持人</span>
+            <span style="font-size:0.75rem;color:var(--text-muted);">复旦大学公共卫生学院 · 大会秘书长</span>
+          </div>
+          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">本届大会秘书长。主持主论坛第一环节（5月16日 9:30–10:40）。</p>
+        </div>
+      </div>
+    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
+        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">张</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">张研</p>
+            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">主论坛 主持人</span>
+            <span style="font-size:0.75rem;color:var(--text-muted);">华中科技大学医药卫生管理学院 · 大会秘书长</span>
+          </div>
+          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">本届大会秘书长。主持主论坛第二环节（5月16日 10:40–12:00）。</p>
+        </div>
+      </div>
     <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
         <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">郭</div>
         <div style="flex:1;">
@@ -448,224 +485,584 @@
         </div>
       </div>
     <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
-        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">孙</div>
-        <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
-            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">孙宗锋</p>
-            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">主论坛 青年学者</span>
-            <span style="font-size:0.75rem;color:var(--text-muted);">山东大学 · 教授 · 博士生导师</span>
-          </div>
-          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">山东大学政治学与公共管理学院副院长，山东大学齐鲁青年学者。主要研究领域为数字政府治理、城市治理、公共组织与政策过程，在Governance、GIQ等期刊发表论文39篇。</p>
-        </div>
-      </div>
-    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
         <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">方</div>
         <div style="flex:1;">
           <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
             <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">方恺</p>
             <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">主论坛 青年学者</span>
-            <span style="font-size:0.75rem;color:var(--text-muted);">浙江大学</span>
+            <span style="font-size:0.75rem;color:var(--text-muted);">浙江大学 · 求是特聘教授 · 国家高层次领军人才</span>
           </div>
-          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">浙江大学特邀主论坛报告嘉宾。</p>
+          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">浙江大学求是特聘教授，公共管理学院副院长，国家高层次领军人才。本届主论坛报告题目：低碳治理工具的经济社会和健康影响。</p>
+        </div>
+      </div>
+    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
+        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">周</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">周忠良</p>
+            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">主论坛 资深学者</span>
+            <span style="font-size:0.75rem;color:var(--text-muted);">西安交通大学 · 二级教授</span>
+          </div>
+          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">西安交通大学公共政策与管理学院院长，二级教授，国家级高层次人才。本届主论坛"感受与分享"环节嘉宾。</p>
         </div>
       </div>
 
     <h2 class="section-heading" style="font-size:1rem;margin-top:2.5rem;">分论坛特邀专家</h2>
-
     <div style="margin-bottom:1rem;padding:0.5rem 1rem;background:rgba(37,99,235,0.1);border-left:2px solid var(--blue-bright);font-size:0.78rem;color:var(--cyan);font-weight:600;">分论坛一 · 卫生政策：守正固本与制度致远</div>
-    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
-        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">张</div>
+    <h3 style="margin:1.5rem 0 0.8rem;font-family:'Noto Serif SC',serif;font-size:0.88rem;color:var(--off-white);font-weight:600;letter-spacing:0.04em;">第一环节</h3>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">主持人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">李佳佳</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">山东大学公共卫生学院 · 教授</span>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">点评人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">孙梅</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">复旦大学公共卫生学院 · 教授</span>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">张</div>
         <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
-            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">张雨萌</p>
-            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">分论坛一 特邀专家</span>
-            <span style="font-size:0.75rem;color:var(--text-muted);">四川大学华西公共卫生学院 · 副教授</span>
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">张雨萌</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">四川大学公共卫生学院 · 副教授</span>
           </div>
-          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">长期从事健康治理与公共政策研究，主持国家自然科学基金青年项目等纵向课题6项，出版专著《医疗服务资源调度优化及应用：基于供需匹配视角》。</p>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：面向区域均衡发展的优质医疗资源配置优化研究</p><p style="font-size:0.78rem;color:var(--text-muted);line-height:1.85;margin-top:0.5rem;">长期从事健康治理与公共政策研究，主持国家自然科学基金青年项目等纵向课题6项，出版专著《医疗服务资源调度优化及应用：基于供需匹配视角》。</p>
         </div>
       </div>
-    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
-        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">陈</div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">陈</div>
         <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
-            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">陈晨</p>
-            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">分论坛一 特邀专家</span>
-            <span style="font-size:0.75rem;color:var(--text-muted);">武汉大学公共卫生学院 · 副教授（特聘副研究员）</span>
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">陈晨</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">武汉大学公共卫生学院 · 副研究员</span>
           </div>
-          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">2017年获英国约克大学卫生经济学博士学位，曾任北京大学中国卫生经济研究中心博士后。主要研究方向为疫苗经济学、老年健康经济学与卫生技术评估，武汉市"武汉英才"优秀青年人才。</p>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：老人疫苗接种助推策略开发、试验与评价</p><p style="font-size:0.78rem;color:var(--text-muted);line-height:1.85;margin-top:0.5rem;">2017年获英国约克大学卫生经济学博士学位，曾任北京大学中国卫生经济研究中心博士后。主要研究方向为疫苗经济学、老年健康经济学与卫生技术评估，武汉市“武汉英才”优秀青年人才。</p>
         </div>
       </div>
-    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
-        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">刘</div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">刘</div>
         <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
-            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">刘欢</p>
-            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">分论坛一 特邀专家</span>
-            <span style="font-size:0.75rem;color:var(--text-muted);">哈尔滨医科大学卫生管理学院 · 副教授</span>
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">刘欢</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">哈尔滨医科大学卫生管理学院 · 副教授</span>
           </div>
-          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">长期从事卫生应急、卫生政策与管理等领域的研究与教学工作，主持黑龙江省自然科学基金等多项课题，兼任《中国卫生经济》杂志青年编委。</p>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：城市基层发热诊室运行的障碍因素识别与治理策略研究——基于LDA-SNA与演化博弈</p><p style="font-size:0.78rem;color:var(--text-muted);line-height:1.85;margin-top:0.5rem;">长期从事卫生应急、卫生政策与管理等领域的研究与教学工作，主持黑龙江省自然科学基金等多项课题，兼任《中国卫生经济》杂志青年编委。</p>
         </div>
       </div>
-
+    <h3 style="margin:1.5rem 0 0.8rem;font-family:'Noto Serif SC',serif;font-size:0.88rem;color:var(--off-white);font-weight:600;letter-spacing:0.04em;">第二环节</h3>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">主持人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">荣超</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">浙江中医药大学人文与管理学院副院长 · 教授</span>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">点评人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">王春平</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">山东第二医科大学公共卫生学院院长 · 教授</span>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">郑</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">郑韵婷</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">福建医科大学卫生管理学院 · 副教授</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：长期护理保险参保对医疗服务利用和费用的影响：一项准实验研究</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">罗</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">罗明志</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">四川大学旅游学院 · 副教授</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：政府健康促进行动对中老年人肥胖状况的影响研究——健康城市试点为例</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">邢</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">邢怡青</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">郑州大学公共卫生学院 · 助理教授</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：“强基层”导向下DRG/DIP支付与县域医疗服务体系价值的协同机理研究——基于新结构经济学的分析框架</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">蒋</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">蒋俊男</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">中南财经政法大学公共管理学院 · 讲师</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：DRG/DIP支付改革是否有效抑制医疗军备竞赛？基于双重差分模型的实证分析</p>
+        </div>
+      </div>
     <div style="margin:2rem 0 1rem;padding:0.5rem 1rem;background:rgba(37,99,235,0.1);border-left:2px solid var(--blue-bright);font-size:0.78rem;color:var(--cyan);font-weight:600;">分论坛二 · 健康治理：数智驱动与协同善治</div>
-    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
-        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">徐</div>
+    <h3 style="margin:1.5rem 0 0.8rem;font-family:'Noto Serif SC',serif;font-size:0.88rem;color:var(--off-white);font-weight:600;letter-spacing:0.04em;">第一环节</h3>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">主持人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">何国忠</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">昆明医科大学公共卫生学院 · 教授</span>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">点评人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">周成超</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">山东大学公共卫生学院 · 教授</span>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">牛</div>
         <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
-            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">徐晨婕</p>
-            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">分论坛二 特邀专家</span>
-            <span style="font-size:0.75rem;color:var(--text-muted);">杭州师范大学公共卫生学院 · 副教授</span>
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">牛奔</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">深圳大学管理学院 · 特聘教授、副院长</span>
           </div>
-          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">主要研究方向为数智健康、精神健康管理、体力活动与脑健康，研究成果发表于Nature Aging、British Journal of Psychiatry等国际知名期刊。</p>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：面向医疗政策文本的LLM-PMC框架构建及实证研究</p><p style="font-size:0.78rem;color:var(--text-muted);line-height:1.85;margin-top:0.5rem;">深圳大学特聘教授，深圳大学管理学院副院长。本届分论坛报告题目：面向医疗政策文本的LLM-PMC框架构建及实证研究。</p>
         </div>
       </div>
-    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
-        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">李</div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">徐</div>
         <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
-            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">李忠</p>
-            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">分论坛二 特邀专家</span>
-            <span style="font-size:0.75rem;color:var(--text-muted);">南京医科大学医政学院 · 副教授</span>
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">徐晨婕</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">杭州师范大学公共管理学院 · 副教授</span>
           </div>
-          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">先后在国家卫健委、美国南卡罗来纳大学公共卫生学院进修学习，主要研究方向为基层卫生治理、慢性病管理。</p>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：数字精神卫生管理：交叉学科视角下的技术突破与公共卫生政策转化</p><p style="font-size:0.78rem;color:var(--text-muted);line-height:1.85;margin-top:0.5rem;">主要研究方向为数智健康、精神健康管理、体力活动与脑健康，研究成果发表于Nature Aging、British Journal of Psychiatry等国际知名期刊。</p>
         </div>
       </div>
-    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
-        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">赵</div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">李</div>
         <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
-            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">赵步天</p>
-            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">分论坛二 特邀专家</span>
-            <span style="font-size:0.75rem;color:var(--text-muted);">北京中医药大学管理学院 · 讲师</span>
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">李忠</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">南京医科大学医政学院 · 副教授</span>
           </div>
-          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">主要研究方向为人工智能与大数据技术在医疗健康管理领域的应用，相关成果发表于Decision Support Systems等国际期刊。</p>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：数字技术赋能基层慢病全链条服务：社会技术系统视角</p><p style="font-size:0.78rem;color:var(--text-muted);line-height:1.85;margin-top:0.5rem;">先后在国家卫健委、美国南卡罗来纳大学公共卫生学院进修学习，主要研究方向为基层卫生治理、慢性病管理。</p>
         </div>
       </div>
-
+    <h3 style="margin:1.5rem 0 0.8rem;font-family:'Noto Serif SC',serif;font-size:0.88rem;color:var(--off-white);font-weight:600;letter-spacing:0.04em;">第二环节</h3>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">主持人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">荣超</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">浙江中医药大学人文与管理学院副院长 · 教授</span>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">点评人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">王春平</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">山东第二医科大学公共卫生学院院长 · 教授</span>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">刘</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">刘利</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">中国医科大学健康管理学院 · 教授</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：护士睡眠障碍预测模型的构建及预测因素的识别：基于可解释性机器学习方法</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">涂</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">涂斯婧</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">广西中医药大学公共卫生与管理学院 · 副教授</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：数智技术赋能体卫融合服务的共生路径研究</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">赵</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">赵步天</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">北京中医药大学管理学院 · 讲师</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：面向在线医疗社区的智能分诊与医生推荐协同机制研究</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">谢</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">谢涛</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">武汉大学政治与公共管理学院 · 弘毅博士后</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：基于多主体建模的医共体医保基金分配失衡演化与仿真优化</p>
+        </div>
+      </div>
     <div style="margin:2rem 0 1rem;padding:0.5rem 1rem;background:rgba(37,99,235,0.1);border-left:2px solid var(--blue-bright);font-size:0.78rem;color:var(--cyan);font-weight:600;">分论坛三 · 健康产业：人群健康与融合创新</div>
-    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
-        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">白</div>
+    <h3 style="margin:1.5rem 0 0.8rem;font-family:'Noto Serif SC',serif;font-size:0.88rem;color:var(--off-white);font-weight:600;letter-spacing:0.04em;">第一环节</h3>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">主持人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">苗豫东</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">郑州大学公共卫生学院 · 教授</span>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">点评人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">张持晨</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">南方医科大学卫生管理学院副院长 · 教授</span>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">白</div>
         <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
-            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">白忠良</p>
-            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">分论坛三 特邀专家</span>
-            <span style="font-size:0.75rem;color:var(--text-muted);">安徽医科大学卫生管理学院 · 副教授</span>
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">白忠良</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">安徽医科大学卫生管理学院 · 副教授</span>
           </div>
-          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">主要研究方向为卫生政策与管理、健康老龄化、老年健康，围绕社会资本与老年衰弱、老年友好型社区建设、主动健康等领域发表多篇学术论文。</p>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：社会资本与老年人群健康实证探究</p><p style="font-size:0.78rem;color:var(--text-muted);line-height:1.85;margin-top:0.5rem;">主要研究方向为卫生政策与管理、健康老龄化、老年健康，围绕社会资本与老年衰弱、老年友好型社区建设、主动健康等领域发表多篇学术论文。</p>
         </div>
       </div>
-    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
-        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">蒋</div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">蒋</div>
         <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
-            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">蒋姝函</p>
-            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">分论坛三 特邀专家</span>
-            <span style="font-size:0.75rem;color:var(--text-muted);">浙江中医药大学人文与管理学院 · 讲师</span>
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">蒋姝函</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">浙江中医药大学人文与管理学院 · 副教授</span>
           </div>
-          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">2016年获美国约翰·霍普金斯大学公共卫生学院全球控烟能力认证。主要研究方向为健康行为、控烟行为动力模式、行为心理与健康管理。</p>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：无形的压力：从不确定到不公平的健康研究探索</p><p style="font-size:0.78rem;color:var(--text-muted);line-height:1.85;margin-top:0.5rem;">2016年获美国约翰·霍普金斯大学公共卫生学院全球控烟能力认证。主要研究方向为健康行为、控烟行为动力模式、行为心理与健康管理。</p>
         </div>
       </div>
-    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
-        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">蒋</div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">蒋</div>
         <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
-            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">蒋宛彦含</p>
-            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">分论坛三 特邀专家</span>
-            <span style="font-size:0.75rem;color:var(--text-muted);">成都中医药大学公共卫生学院 · 讲师</span>
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">蒋宛彦含</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">成都中医药大学公共卫生学院 · 讲师</span>
           </div>
-          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">主要研究方向为环境污染物过程模拟与健康效应评价，发表SCI学术期刊论文十余篇，受聘为四川省疫情防控与公共卫生研究智库专家。</p>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：社会支持对老年人睡眠质量的影响：孤独感与抑郁情绪的中介作用</p><p style="font-size:0.78rem;color:var(--text-muted);line-height:1.85;margin-top:0.5rem;">主要研究方向为环境污染物过程模拟与健康效应评价，发表SCI学术期刊论文十余篇，受聘为四川省疫情防控与公共卫生研究智库专家。</p>
         </div>
       </div>
-    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
-        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">王</div>
+    <h3 style="margin:1.5rem 0 0.8rem;font-family:'Noto Serif SC',serif;font-size:0.88rem;color:var(--off-white);font-weight:600;letter-spacing:0.04em;">第二环节</h3>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">主持人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">王皓翔</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">中山大学公共卫生学院 · 教授</span>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">点评人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">陈春</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">温州医科大学医学人文与管理学院 · 教授</span>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">张</div>
         <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
-            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">王璐颖</p>
-            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">分论坛三 特邀专家</span>
-            <span style="font-size:0.75rem;color:var(--text-muted);">中国药科大学国际医药商学院 · 博士后、助理研究员</span>
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">张淑娥</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">哈尔滨医科大学卫生管理学院 · 副教授</span>
           </div>
-          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">主要研究方向为药物经济学评价、卫生技术评估、患者健康产出测量、疾病负担研究，负责或参与相关课题二十余项。</p>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：寒地老年人共病类型受何影响？——基于CHARLS的五年实证分析</p>
         </div>
       </div>
-
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">叶</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">叶欣</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">复旦大学全球公共政策研究院 · 青年副研究员</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：生命历程因素对老年期认知功能的影响：针对中国老年人的回顾性研究</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">王</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">王璐颖</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">中国药科大学国际医药商学院 · 讲师</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：整体健康视角下非正式照护者的疾病负担和幸福感研究</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">龙</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">龙成旭</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">华中科技大学医药卫生管理学院 · 讲师</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：行动受限老年人的未满足临终照护需求：一项覆盖32个国家的研究</p>
+        </div>
+      </div>
     <div style="margin:2rem 0 1rem;padding:0.5rem 1rem;background:rgba(37,99,235,0.1);border-left:2px solid var(--blue-bright);font-size:0.78rem;color:var(--cyan);font-weight:600;">分论坛四 · 前沿探索：范式探新与边界拓展</div>
-    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
-        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">高</div>
+    <h3 style="margin:1.5rem 0 0.8rem;font-family:'Noto Serif SC',serif;font-size:0.88rem;color:var(--off-white);font-weight:600;letter-spacing:0.04em;">第一环节</h3>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">主持人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">杨练</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">成都中医药大学公共卫生学院副院长 · 教授</span>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">点评人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">石昕</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">中国医科大学健康管理学院院长 · 教授</span>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">高</div>
         <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
-            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">高婷婷</p>
-            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">分论坛四 特邀专家</span>
-            <span style="font-size:0.75rem;color:var(--text-muted);">山东大学卫生管理与政策研究中心 · 研究员（副教授）</span>
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">高婷婷</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">山东大学公共卫生学院 · 研究员</span>
           </div>
-          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">主要研究方向为老年人心理健康、心理健康状况及影响因素、机构养老，主持或参与多项国家级及省部级科研项目，兼任《中国医学伦理学》杂志青年编委。</p>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：网络成瘾与负性情绪的共存模式及风险因素研究</p><p style="font-size:0.78rem;color:var(--text-muted);line-height:1.85;margin-top:0.5rem;">主要研究方向为老年人心理健康、心理健康状况及影响因素、机构养老，主持或参与多项国家级及省部级科研项目，兼任《中国医学伦理学》杂志青年编委。</p>
         </div>
       </div>
-    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
-        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">刘</div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">刘</div>
         <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
-            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">刘晨曦</p>
-            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">分论坛四 特邀专家</span>
-            <span style="font-size:0.75rem;color:var(--text-muted);">华中科技大学同济医学院 · 副教授</span>
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">刘晨曦</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">华中科技大学医药卫生管理学院 · 副教授</span>
           </div>
-          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">现任联合国训练研究所荣誉讲师。主要研究方向为卫生管理、实施科学、药物政策及医生处方行为，在抗菌药物处方行为、因果推断方法等领域发表多篇高水平论文。</p>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：实现AI大模型在医疗领域健康效果转化的实践与思考</p><p style="font-size:0.78rem;color:var(--text-muted);line-height:1.85;margin-top:0.5rem;">现任联合国训练研究所荣誉讲师。主要研究方向为卫生管理、实施科学、药物政策及医生处方行为，在抗菌药物处方行为、因果推断方法等领域发表多篇高水平论文。</p>
         </div>
       </div>
-    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
-        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">陆</div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">陆</div>
         <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
-            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">陆姣</p>
-            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">分论坛四 特邀专家</span>
-            <span style="font-size:0.75rem;color:var(--text-muted);">西安交通大学公共政策与管理学院 · 副教授 · 博士生导师</span>
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">陆姣</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">西安交通大学公共政策与管理学院 · 副教授</span>
           </div>
-          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">2019年入选山西省"三晋英才"青年优秀人才，2024年入选陕西省"三秦英才"人才计划。主要研究方向为行为决策与健康管理、卫生管理与卫生政策，主持国家级及省部级项目10余项。</p>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：从技术可用到服务常用：e-Health服务利用现状与供需侧驱动因素研究</p><p style="font-size:0.78rem;color:var(--text-muted);line-height:1.85;margin-top:0.5rem;">2019年入选山西省“三晋英才”青年优秀人才，2024年入选陕西省“三秦英才”人才计划。主要研究方向为行为决策与健康管理、卫生管理与卫生政策，主持国家级及省部级项目10余项。</p>
         </div>
       </div>
-
+    <h3 style="margin:1.5rem 0 0.8rem;font-family:'Noto Serif SC',serif;font-size:0.88rem;color:var(--off-white);font-weight:600;letter-spacing:0.04em;">第二环节</h3>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">主持人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">熊巨洋</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">华中科技大学医药卫生管理学院 · 教授</span>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">点评人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">陈任</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">安徽医科大学卫生管理学院副院长 · 教授</span>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">王</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">王旸</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">深圳大学管理学院 · 长聘副教授、研究员</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：数智赋能基层慢病共病管理：基于因果机器学习的探索</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">曹</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">曹丹</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">西安建筑科技大学公共管理学院 · 副教授</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：超越工具理性：人机协同诊疗模式下的患者信任重构——基于生成式AI视频情景实验的证据</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">史</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">史钊</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">山东大学生活质量与公共政策研究中心 · 专任研究员</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：整体健康视角下非正式照护者的疾病负担和幸福感研究</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">苏</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">苏岱</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">首都医科大学 · 副教授</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：中老年人痴呆风险预测：来自19个国家前瞻性队列研究的证据</p>
+        </div>
+      </div>
+    <div style="margin:2rem 0 1rem;padding:0.5rem 1rem;background:rgba(180,83,9,0.15);border-left:2px solid #d97706;font-size:0.78rem;color:#d97706;font-weight:600;">分论坛五 · 后浪严选：精研甄萃与新知遴选</div>
+    <h3 style="margin:1.5rem 0 0.8rem;font-family:'Noto Serif SC',serif;font-size:0.88rem;color:var(--off-white);font-weight:600;letter-spacing:0.04em;">第一环节</h3>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">主持人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">曾雁冰</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">首都医科大学公共卫生学院 · 教授</span>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">点评人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">康正</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">哈尔滨医科大学卫生管理学院副院长 · 教授</span>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#b45309,#d97706);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">冯</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">冯红红</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(180,83,9,0.18);border:1px solid rgba(217,119,6,0.4);color:#fbbf24;">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">中山大学公共卫生学院 · 博士后</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：DIP支付方式下脑卒中急性后期治疗连续性的现状研究</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#b45309,#d97706);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">蔡</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">蔡高成</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(180,83,9,0.18);border:1px solid rgba(217,119,6,0.4);color:#fbbf24;">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">深圳大学管理学院 · 博士研究生</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：约束多目标驱动的DRG细分组方法及实证分析</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#b45309,#d97706);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">王</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">王权</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(180,83,9,0.18);border:1px solid rgba(217,119,6,0.4);color:#fbbf24;">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">北京大学公共卫生学院 · 博士研究生</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：基层医护人员何时提供预防性建议？来自含糖饮料咨询混合方法调查实验的证据</p>
+        </div>
+      </div>
+    <h3 style="margin:1.5rem 0 0.8rem;font-family:'Noto Serif SC',serif;font-size:0.88rem;color:var(--off-white);font-weight:600;letter-spacing:0.04em;">第二环节</h3>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">主持人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">林小军</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">四川大学公共卫生学院 · 副教授</span>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">点评人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">殷晓旭</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">华中科技大学公共卫生学院 · 教授</span>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#b45309,#d97706);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">高</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">高一冉</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(180,83,9,0.18);border:1px solid rgba(217,119,6,0.4);color:#fbbf24;">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">哈尔滨医科大学卫生管理学院 · 博士研究生</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：突发公共卫生事件背景下医疗激增风险因素之间的关联：基于网络分析的视角</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#b45309,#d97706);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">罗</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">罗京京</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(180,83,9,0.18);border:1px solid rgba(217,119,6,0.4);color:#fbbf24;">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">山东大学公共卫生学院 · 博士研究生</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：中国农村老年人的童年逆境、当前逆境与认知衰弱：社会支持是否发挥作用？</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#b45309,#d97706);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">王</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">王晨舟</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(180,83,9,0.18);border:1px solid rgba(217,119,6,0.4);color:#fbbf24;">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">华中科技大学医药卫生管理学院 · 博士研究生</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：边界性住院决策中的信息诱导、患者投诉与监管约束：来自医学生博弈实验的证据</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#b45309,#d97706);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">顾</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">顾念</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(180,83,9,0.18);border:1px solid rgba(217,119,6,0.4);color:#fbbf24;">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">中南大学公共管理学院 · 博士生</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：医养结合何以促进老年家庭消费？——基于双重机器学习的经验证据</p>
+        </div>
+      </div>
     <div style="margin:2rem 0 1rem;padding:0.5rem 1rem;background:rgba(180,83,9,0.15);border-left:2px solid #d97706;font-size:0.78rem;color:#d97706;font-weight:600;">分论坛六 · 青椒心声：躬行求真与学思辨析</div>
-    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
-        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">黄</div>
+    <h3 style="margin:1.5rem 0 0.8rem;font-family:'Noto Serif SC',serif;font-size:0.88rem;color:var(--off-white);font-weight:600;letter-spacing:0.04em;">第一环节</h3>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">主持人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">刘文彬</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">福建医科大学卫生管理学院 · 教授</span>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#b45309,#d97706);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">黄</div>
         <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
-            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">黄奕祥</p>
-            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">分论坛六 特邀专家</span>
-            <span style="font-size:0.75rem;color:var(--text-muted);">中山大学公共卫生学院 · 教授 · 博士生导师</span>
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">黄奕祥</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(180,83,9,0.18);border:1px solid rgba(217,119,6,0.4);color:#fbbf24;">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">中山大学公共卫生学院 · 教授</span>
           </div>
-          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">卫生管理学系主任。主要研究方向为卫生经济与政策、卫生健康服务整合、卫生健康发展战略与规划，兼任国家卫生健康委推进分级诊疗与医疗联合体建设工作专家组成员。</p>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：立德树人・守正创新——以学生成长为中心的教研实践与浅思</p><p style="font-size:0.78rem;color:var(--text-muted);line-height:1.85;margin-top:0.5rem;">卫生管理学系主任。主要研究方向为卫生经济与政策、卫生健康服务整合、卫生健康发展战略与规划，兼任国家卫生健康委推进分级诊疗与医疗联合体建设工作专家组成员。</p>
         </div>
       </div>
-    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
-        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">李</div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#b45309,#d97706);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">李</div>
         <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
-            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">李莉</p>
-            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">分论坛六 特邀专家</span>
-            <span style="font-size:0.75rem;color:var(--text-muted);">浙大城市学院法学院 · 教授</span>
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">李莉</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(180,83,9,0.18);border:1px solid rgba(217,119,6,0.4);color:#fbbf24;">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">浙大城市学院 · 教授</span>
           </div>
-          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">主要研究领域为公共管理、卫生政策与管理，主持国家级及省部级课题多项，围绕基本公共卫生服务激励约束机制等领域开展深入研究。</p>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：服务产业生态为导向的科研范式转向：以老年认知障碍干预研究为例</p><p style="font-size:0.78rem;color:var(--text-muted);line-height:1.85;margin-top:0.5rem;">主要研究领域为公共管理、卫生政策与管理，主持国家级及省部级课题多项，围绕基本公共卫生服务激励约束机制等领域开展深入研究。</p>
         </div>
       </div>
-    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
-        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">井</div>
+    <h3 style="margin:1.5rem 0 0.8rem;font-family:'Noto Serif SC',serif;font-size:0.88rem;color:var(--off-white);font-weight:600;letter-spacing:0.04em;">第二环节</h3>
+      <div style="display:flex;gap:1rem;align-items:center;padding:0.7rem 1.1rem;background:rgba(37,99,235,0.05);border:1px solid var(--border);margin-bottom:0.6rem;">
+        <span style="flex-shrink:0;font-size:0.7rem;letter-spacing:0.08em;color:var(--cyan);background:rgba(37,99,235,0.18);padding:0.2rem 0.6rem;font-weight:600;">主持人</span>
+        <span style="font-family:'Noto Serif SC',serif;font-size:0.88rem;color:#fff;font-weight:600;">王欣</span>
+        <span style="font-size:0.76rem;color:var(--text-muted);">中山大学公共卫生学院 · 副教授</span>
+      </div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#b45309,#d97706);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">井</div>
         <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
-            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">井淇</p>
-            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">分论坛六 特邀专家</span>
-            <span style="font-size:0.75rem;color:var(--text-muted);">山东第二医科大学管理学院 · 教授 · 博士生导师</span>
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">井淇</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(180,83,9,0.18);border:1px solid rgba(217,119,6,0.4);color:#fbbf24;">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">山东第二医科大学 · 教授</span>
           </div>
-          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">牛津大学访问学者，复旦大学公共管理博士后，2024中国知网高被引学者。主要研究方向为老年健康管理、老年人整合照护（ICOPE）、脆弱人群健康管理，兼任世界卫生组织国际分类家族中国合作中心专家。</p>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：科研行路记：科研的心路历程与青年教师成长的思考</p><p style="font-size:0.78rem;color:var(--text-muted);line-height:1.85;margin-top:0.5rem;">牛津大学访问学者，复旦大学公共管理博士后，2024中国知网高被引学者。主要研究方向为老年健康管理、老年人整合照护（ICOPE）、脆弱人群健康管理，兼任世界卫生组织国际分类家族中国合作中心专家。</p>
         </div>
       </div>
-    <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem;">
-        <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue-mid),var(--purple));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;">朱</div>
+      <div class="card" style="display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:0.8rem;padding:1.3rem 1.5rem;">
+        <div style="flex-shrink:0;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#b45309,#d97706);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;">朱</div>
         <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem;flex-wrap:wrap;">
-            <p style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#fff;font-weight:600;">朱斌</p>
-            <span style="font-size:0.68rem;padding:0.15rem 0.5rem;background:rgba(37,99,235,0.2);border:1px solid rgba(96,165,250,0.3);color:var(--cyan);">分论坛六 特邀专家</span>
-            <span style="font-size:0.75rem;color:var(--text-muted);">南方科技大学公共卫生及应急管理学院 · 助理教授（副研究员）</span>
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.2rem;flex-wrap:wrap;">
+            <p style="font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#fff;font-weight:600;">朱斌</p>
+            <span style="font-size:0.66rem;padding:0.12rem 0.5rem;background:rgba(180,83,9,0.18);border:1px solid rgba(217,119,6,0.4);color:#fbbf24;">报告嘉宾</span>
+            <span style="font-size:0.74rem;color:var(--text-muted);">南方科技大学公共卫生及应急管理学院 · 助理教授</span>
           </div>
-          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.9;">西安交通大学管理学博士、香港城市大学公共政策哲学博士，美国加州大学圣地亚哥分校医学院博士后。主要研究方向为健康地理学、时空流行病学、卫生政策与老龄健康，近五年发表中英文论文40余篇。</p>
+          <p style="font-size:0.78rem;color:var(--cyan-light);line-height:1.7;margin-top:0.4rem;font-style:italic;">报告题目：基于空间智能的急救医疗资源配置效果模拟与预测与我的个人成长</p><p style="font-size:0.78rem;color:var(--text-muted);line-height:1.85;margin-top:0.5rem;">西安交通大学管理学博士、香港城市大学公共政策哲学博士，美国加州大学圣地亚哥分校医学院博士后。主要研究方向为健康地理学、时空流行病学、卫生政策与老龄健康，近五年发表中英文论文40余篇。</p>
         </div>
       </div>
   </div>
@@ -676,7 +1073,7 @@
 <section id="forums" class="section">
   <div class="page-hero"><div class="page-hero-inner"><div class="page-tag">分论坛</div><h1 class="page-title">分论坛设置</h1></div></div>
   <div class="page-body">
-    <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.8;">点击任意分论坛卡片，可查看该分论坛的摘要视频。</p>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.8;">点击任意分论坛卡片，可查看该分论坛的详细议程。</p>
     <h2 class="section-heading" style="font-size:0.95rem;">学术分论坛</h2>
     <div class="forums-grid" style="margin-bottom:2.5rem;">
       <div class="forum-card" onclick="openForumDetail('f1','卫生政策：守正固本与制度致远','学术分论坛一')"><div class="forum-num">01</div><div class="forum-badge">学术分论坛一</div><p class="forum-title">卫生政策：守正固本与制度致远</p><p class="forum-desc">聚焦卫生政策制定与评估，探讨制度建设的历史传承与现实路径，推进守正固本与制度致远的理论与实践研究。</p><div class="forum-arrow">→</div></div>
@@ -693,26 +1090,6 @@
   <footer><div class="footer-inner"><p class="footer-title">2026健康政策与管理青年学者学术大会</p><div class="footer-divider"></div><p>© 2026 健康政策与管理青年学者学术大会组委会 · 承办：杭州师范大学公共管理学院</p></div></footer>
 </section>
 
-<!-- ══ VIDEO DETAIL ══ -->
-<div id="video-detail">
-  <div class="page-hero"><div class="page-hero-inner"><div class="page-tag" id="vd-tag">分论坛摘要视频</div><h1 class="page-title" id="vd-title">摘要视频</h1></div></div>
-  <div class="page-body">
-    <button class="back-btn" onclick="backToForums()">← 返回分论坛列表</button>
-    <div class="placeholder-note" id="vd-placeholder"><p style="font-size:1.5rem;margin-bottom:1rem;">🎬</p><p>本分论坛摘要视频尚未上线，收集整理完成后将在此处发布。</p></div>
-    <div class="video-grid-display" id="vd-grid" style="display:none;"></div>
-    <div class="card" style="margin-top:3rem;">
-      <h3 style="font-family:'Noto Serif SC',serif;font-size:0.9rem;color:var(--cyan);margin-bottom:1rem;">📋 视频上传说明（供工作人员参考）</h3>
-      <p style="font-size:0.8rem;color:var(--text-muted);line-height:2.2;">
-        1. 将视频上传至B站后，获取 <code style="color:var(--cyan-light);background:rgba(255,255,255,0.05);padding:0.1rem 0.4rem;">BV号</code>（如 BV1xxxxxxxxxxxx）；<br>
-        2. 在下方 JS 的 <code style="color:var(--cyan-light);background:rgba(255,255,255,0.05);padding:0.1rem 0.4rem;">videoData</code> 对象中，找到对应分论坛，添加一条视频记录；<br>
-        3. 每条记录包含：bvid（BV号）、title（标题）、author（汇报人）、affil（单位）、cover（封面图URL，可选）；<br>
-        4. 保存后刷新页面即可自动显示，点击封面弹窗播放。
-      </p>
-    </div>
-  </div>
-  <footer><div class="footer-inner"><p class="footer-title">2026健康政策与管理青年学者学术大会</p><div class="footer-divider"></div><p>© 2026 健康政策与管理青年学者学术大会组委会 · 承办：杭州师范大学公共管理学院</p></div></footer>
-</div>
-
 <!-- ══ FORUM DETAIL SUB-PAGE ══ -->
 <div id="forum-detail">
   <div class="page-hero"><div class="page-hero-inner">
@@ -725,19 +1102,9 @@
     <!-- 专家列表 -->
     <div id="fd-experts" style="margin-bottom:2.5rem;"></div>
 
-    <!-- 议程占位 -->
+    <!-- 议程（动态生成） -->
     <h2 class="section-heading" style="font-size:1rem;">分论坛议程</h2>
-    <div class="placeholder-note" id="fd-agenda-placeholder">
-      <p style="font-size:1.5rem;margin-bottom:1rem;">📋</p>
-      <p>本分论坛详细议程将在确认后公布，敬请期待。</p>
-    </div>
-
-    <!-- 投稿学者占位 -->
-    <h2 class="section-heading" style="font-size:1rem;margin-top:2.5rem;">投稿汇报学者</h2>
-    <div class="placeholder-note">
-      <p style="font-size:1.5rem;margin-bottom:1rem;">🎓</p>
-      <p>投稿学者名单将于审稿完成后公布。</p>
-    </div>
+    <div id="fd-agenda-host" style="margin-bottom:2rem;"></div>
   </div>
   <footer><div class="footer-inner"><p class="footer-title">2026健康政策与管理青年学者学术大会</p><div class="footer-divider"></div><p>© 2026 健康政策与管理青年学者学术大会组委会 · 承办：杭州师范大学公共管理学院</p></div></footer>
 </div>
@@ -755,113 +1122,41 @@
       <div style="font-size:2rem;flex-shrink:0;">🌐</div>
       <div>
         <p style="font-family:'Noto Serif SC',serif;font-size:1rem;color:#fff;font-weight:600;margin-bottom:0.5rem;">云论坛说明</p>
-        <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.9;">云论坛将汇集所有参会汇报人录制的摘要视频，面向学术社群公开展示。视频直接嵌入B站播放器，可在本页面内在线观看，无需跳转。分论坛模块及汇报视频将在审稿完成、确认参会名单后陆续上线。</p>
+        <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.9;">云论坛汇集所有线上汇报学者录制的摘要视频，面向学术社群公开展示。所有视频均托管于 B 站，点击任一视频条目即可跳转观看。</p>
       </div>
     </div>
 
-    <!-- ── 置顶参考资料 ── -->
-    <h2 class="section-heading" style="font-size:1rem;">📌 置顶参考资料</h2>
+    <!-- ── 汇报视频区 ── -->
+    <h2 class="section-heading" style="font-size:1rem;">汇报视频</h2>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.4rem;line-height:1.8;">本届云论坛共收录 <strong style="color:var(--cyan-light);" id="cloudTotal">—</strong> 条汇报视频。点击任一视频条目即可跳转至 B 站观看。</p>
 
-    <!-- Row 1: 录制教程 -->
-    <div style="margin-bottom:2.5rem;">
-      <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem;">
-        <span style="display:inline-block;padding:0.25rem 0.8rem;background:linear-gradient(90deg,var(--blue-mid),var(--purple));font-size:0.72rem;letter-spacing:0.08em;color:#fff;">录制教程</span>
-        <span style="font-size:0.8rem;color:var(--text-muted);">腾讯会议录屏操作指引，请参会汇报人制作视频前仔细阅读</span>
+    <!-- 搜索栏 -->
+    <div style="display:flex;gap:0.8rem;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;">
+      <div style="position:relative;flex:1;min-width:240px;">
+        <input type="text" id="cloudSearch" placeholder="搜索姓名 · 学校 · 报告标题关键词…"
+               style="width:100%;padding:0.7rem 1rem 0.7rem 2.4rem;background:rgba(255,255,255,0.04);border:1px solid var(--border);color:#fff;font-size:0.85rem;outline:none;font-family:inherit;transition:border-color 0.2s;"
+               oninput="filterCloudVideos()" onfocus="this.style.borderColor='var(--cyan)'" onblur="this.style.borderColor='var(--border)'">
+        <span style="position:absolute;left:0.85rem;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:0.95rem;pointer-events:none;">🔍</span>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.2rem;">
-        <div class="vcard" onclick="openVideo('BV13CdSBYENu')">
-          <div class="vcard-thumb" style="background:linear-gradient(135deg,rgba(37,99,235,0.5),rgba(124,58,237,0.4));">
-            <div class="vcard-thumb-placeholder"><span style="font-size:2.5rem;">🎥</span><span style="color:var(--off-white);font-size:0.82rem;">腾讯会议录屏教程</span></div>
-            <div class="vcard-play-overlay"><div class="vcard-play-btn">▶</div></div>
-          </div>
-          <div class="vcard-info">
-            <p class="vcard-title">腾讯会议录屏使用说明教程 1</p>
-            <p class="vcard-meta">录制操作指引 · 建议参会汇报人优先观看</p>
-          </div>
-        </div>
-        <div class="vcard" onclick="openVideo('BV1yfdSBHEAd')">
-          <div class="vcard-thumb" style="background:linear-gradient(135deg,rgba(37,99,235,0.5),rgba(124,58,237,0.4));">
-            <div class="vcard-thumb-placeholder"><span style="font-size:2.5rem;">🎥</span><span style="color:var(--off-white);font-size:0.82rem;">腾讯会议录屏教程</span></div>
-            <div class="vcard-play-overlay"><div class="vcard-play-btn">▶</div></div>
-          </div>
-          <div class="vcard-info">
-            <p class="vcard-title">腾讯会议录屏使用说明教程 2</p>
-            <p class="vcard-meta">录制操作指引 · 建议参会汇报人优先观看</p>
-          </div>
-        </div>
-      </div>
+      <span style="font-size:0.78rem;color:var(--text-muted);" id="cloudFilterCount"></span>
     </div>
 
-    <!-- Row 2: 视频样例 -->
-    <div style="margin-bottom:3.5rem;">
-      <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem;">
-        <span style="display:inline-block;padding:0.25rem 0.8rem;background:linear-gradient(90deg,#b45309,#d97706);font-size:0.72rem;letter-spacing:0.08em;color:#fff;">摘要视频样例</span>
-        <span style="font-size:0.8rem;color:var(--text-muted);">不同时长的摘要视频样例，供参会汇报人参考</span>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;">
-        <div class="vcard" onclick="openVideo('BV1NodSB9EaC')">
-          <div class="vcard-thumb" style="background:linear-gradient(135deg,rgba(180,83,9,0.4),rgba(217,119,6,0.5));">
-            <div class="vcard-thumb-placeholder"><span style="font-size:2.5rem;">▶</span><span style="color:var(--off-white);font-size:0.82rem;">样例视频</span></div>
-            <div class="vcard-play-overlay"><div class="vcard-play-btn">▶</div></div>
-          </div>
-          <div class="vcard-info">
-            <p class="vcard-title">云论坛摘要视频样例 1</p>
-            <p class="vcard-meta" style="display:flex;align-items:center;gap:0.5rem;"><span style="background:rgba(180,83,9,0.3);border:1px solid rgba(217,119,6,0.4);color:#fbbf24;padding:0.1rem 0.45rem;font-size:0.68rem;border-radius:2px;">3分钟</span> 3分钟时长样例</p>
-          </div>
-        </div>
-        <div class="vcard" onclick="openVideo('BV1X6dSBYETY')">
-          <div class="vcard-thumb" style="background:linear-gradient(135deg,rgba(180,83,9,0.4),rgba(217,119,6,0.5));">
-            <div class="vcard-thumb-placeholder"><span style="font-size:2.5rem;">▶</span><span style="color:var(--off-white);font-size:0.82rem;">样例视频</span></div>
-            <div class="vcard-play-overlay"><div class="vcard-play-btn">▶</div></div>
-          </div>
-          <div class="vcard-info">
-            <p class="vcard-title">云论坛摘要视频样例 2</p>
-            <p class="vcard-meta" style="display:flex;align-items:center;gap:0.5rem;"><span style="background:rgba(180,83,9,0.3);border:1px solid rgba(217,119,6,0.4);color:#fbbf24;padding:0.1rem 0.45rem;font-size:0.68rem;border-radius:2px;">3分钟</span> 3分钟时长样例</p>
-          </div>
-        </div>
-        <div class="vcard" onclick="openVideo('BV1yodSBXEBU')">
-          <div class="vcard-thumb" style="background:linear-gradient(135deg,rgba(180,83,9,0.4),rgba(217,119,6,0.5));">
-            <div class="vcard-thumb-placeholder"><span style="font-size:2.5rem;">▶</span><span style="color:var(--off-white);font-size:0.82rem;">样例视频</span></div>
-            <div class="vcard-play-overlay"><div class="vcard-play-btn">▶</div></div>
-          </div>
-          <div class="vcard-info">
-            <p class="vcard-title">云论坛摘要视频样例 3</p>
-            <p class="vcard-meta" style="display:flex;align-items:center;gap:0.5rem;"><span style="background:rgba(180,83,9,0.3);border:1px solid rgba(217,119,6,0.4);color:#fbbf24;padding:0.1rem 0.45rem;font-size:0.68rem;border-radius:2px;">5分钟</span> 5分钟时长样例</p>
-          </div>
-        </div>
-        <div class="vcard" onclick="openVideo('BV1HwdDBJEd7')">
-          <div class="vcard-thumb" style="background:linear-gradient(135deg,rgba(180,83,9,0.4),rgba(217,119,6,0.5));">
-            <div class="vcard-thumb-placeholder"><span style="font-size:2.5rem;">▶</span><span style="color:var(--off-white);font-size:0.82rem;">样例视频</span></div>
-            <div class="vcard-play-overlay"><div class="vcard-play-btn">▶</div></div>
-          </div>
-          <div class="vcard-info">
-            <p class="vcard-title">云论坛摘要视频样例 4</p>
-            <p class="vcard-meta" style="display:flex;align-items:center;gap:0.5rem;"><span style="background:rgba(180,83,9,0.3);border:1px solid rgba(217,119,6,0.4);color:#fbbf24;padding:0.1rem 0.45rem;font-size:0.68rem;border-radius:2px;">10分钟</span> 10分钟时长样例</p>
-          </div>
-        </div>
-      </div>
+    <!-- 视频列表容器 -->
+    <div id="cloudVideoList" style="display:flex;flex-direction:column;border-top:1px solid var(--border);"></div>
+
+    <!-- 加载更多按钮 -->
+    <div id="cloudLoadMoreWrap" style="text-align:center;margin-top:1.5rem;display:none;">
+      <button onclick="loadMoreCloudVideos()"
+              style="padding:0.7rem 2rem;background:rgba(37,99,235,0.12);border:1px solid var(--blue-bright);color:var(--cyan-light);font-size:0.85rem;font-family:inherit;cursor:pointer;transition:all 0.25s;letter-spacing:0.04em;"
+              onmouseover="this.style.background='rgba(37,99,235,0.22)'"
+              onmouseout="this.style.background='rgba(37,99,235,0.12)'">
+        加载更多 <span id="cloudRemainingCount" style="color:var(--text-muted);font-size:0.78rem;"></span>
+      </button>
     </div>
 
-    <!-- ── 分论坛视频模块（占位） ── -->
-    <h2 class="section-heading" style="font-size:1rem;">分论坛汇报视频</h2>
-    <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:2rem;line-height:1.8;">各分论坛汇报视频将在参会名单确认、视频收集完成后陆续上线。</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;">
-      <div class="forum-card" style="cursor:default;opacity:0.6;"><div class="forum-num">01</div><div class="forum-badge">学术分论坛一</div><p class="forum-title">卫生政策：守正固本与制度致远</p><p class="forum-desc">视频收集中，敬请期待。</p></div>
-      <div class="forum-card" style="cursor:default;opacity:0.6;"><div class="forum-num">02</div><div class="forum-badge">学术分论坛二</div><p class="forum-title">健康治理：数智驱动与协同善治</p><p class="forum-desc">视频收集中，敬请期待。</p></div>
-      <div class="forum-card" style="cursor:default;opacity:0.6;"><div class="forum-num">03</div><div class="forum-badge">学术分论坛三</div><p class="forum-title">健康产业：人群健康与融合创新</p><p class="forum-desc">视频收集中，敬请期待。</p></div>
-      <div class="forum-card" style="cursor:default;opacity:0.6;"><div class="forum-num">04</div><div class="forum-badge">学术分论坛四</div><p class="forum-title">前沿探索：范式探新与边界拓展</p><p class="forum-desc">视频收集中，敬请期待。</p></div>
-      <div class="forum-card" style="cursor:default;opacity:0.6;"><div class="forum-num">05</div><div class="forum-badge special">特别分论坛一</div><p class="forum-title">后浪严选：精研甄萃与新知遴选</p><p class="forum-desc">视频收集中，敬请期待。</p></div>
-      <div class="forum-card" style="cursor:default;opacity:0.6;"><div class="forum-num">06</div><div class="forum-badge special">特别分论坛二</div><p class="forum-title">青椒心声：躬行求真与学思辨析</p><p class="forum-desc">视频收集中，敬请期待。</p></div>
-    </div>
-
-    <!-- 工作人员说明 -->
-    <div class="card" style="margin-top:3rem;">
-      <h3 style="font-family:'Noto Serif SC',serif;font-size:0.9rem;color:var(--cyan);margin-bottom:1rem;">📋 视频上传说明（供工作人员参考）</h3>
-      <p style="font-size:0.8rem;color:var(--text-muted);line-height:2.2;">
-        1. 将视频上传至B站后，获取 <code style="color:var(--cyan-light);background:rgba(255,255,255,0.05);padding:0.1rem 0.4rem;">BV号</code>（如 BV1xxxxxxxxxxxx）；<br>
-        2. 在JS的 <code style="color:var(--cyan-light);background:rgba(255,255,255,0.05);padding:0.1rem 0.4rem;">videoData</code> 对象中找到对应分论坛，添加视频记录（bvid、title、author、affil）；<br>
-        3. 将对应分论坛的云论坛占位卡片改为可点击（去掉 <code style="color:var(--cyan-light);background:rgba(255,255,255,0.05);padding:0.1rem 0.4rem;">cursor:default;opacity:0.6</code>，添加 <code style="color:var(--cyan-light);background:rgba(255,255,255,0.05);padding:0.1rem 0.4rem;">onclick="openForumVideos(...)"</code>）。
-      </p>
+    <!-- 无结果提示 -->
+    <div id="cloudNoResult" style="display:none;text-align:center;padding:3rem 1rem;color:var(--text-muted);font-size:0.88rem;">
+      未找到匹配的视频。请尝试其他关键词。
     </div>
 
   </div>
@@ -895,15 +1190,71 @@
   <div class="page-hero"><div class="page-hero-inner"><div class="page-tag">通知公告</div><h1 class="page-title">最新通知</h1></div></div>
   <div class="page-body">
     <div class="notice-list">
-      <div class="notice-item pinned"><div class="notice-date"><span class="day">13</span><span class="mon">MAR 2026</span></div><div class="notice-body"><span class="notice-tag">📌 置顶</span><p class="notice-title">2026健康政策与管理青年学者学术大会第1.5轮通知暨主题征文通知</p><p class="notice-excerpt">论坛征文通知正式发布。投稿邮箱：yfhpm2026@163.com，截稿日期：2026年4月15日。欢迎各位青年学者踊跃投稿。</p></div></div>
-      <div class="notice-item"><div class="notice-date"><span class="day">25</span><span class="mon">MAR 2026</span></div><div class="notice-body"><span class="notice-tag">📋 公告</span><p class="notice-title">论坛分论坛主题正式更新公布</p><p class="notice-excerpt">六大分论坛主题已正式确定：卫生政策：守正固本与制度致远 · 健康治理：数智驱动与协同善治 · 健康产业：人群健康与融合创新 · 前沿探索：范式探新与边界拓展 · 后浪严选：精研甄萃与新知遴选 · 青椒心声：躬行求真与学思辨析。</p></div></div>
-      <div class="notice-item"><div class="notice-date"><span class="day">16</span><span class="mon">APR 2026</span></div><div class="notice-body"><span class="notice-tag">📄 审稿</span><p class="notice-title">投稿审稿工作启动通知</p><p class="notice-excerpt">截稿日期（4月15日）后，审稿工作已于4月16日正式启动，预期于4月25日完成全部评审工作。审稿结果将及时通知投稿作者。</p></div></div>
-      <div class="notice-item"><div class="notice-date"><span class="day">25</span><span class="mon">APR 2026</span></div><div class="notice-body"><span class="notice-tag">🌐 云论坛</span><p class="notice-title">云论坛网站上线公告</p><p class="notice-excerpt">云论坛网站将于审稿完成后正式上线。摘要视频上传工作预计于4月30日开始，敬请期待。</p></div></div>
-      <div class="notice-item"><div class="notice-date"><span class="day">15</span><span class="mon">MAY 2026</span></div><div class="notice-body"><span class="notice-tag">📍 报到</span><p class="notice-title">报到时间与地点公告</p><p class="notice-excerpt">报到时间：5月15日09:00–22:00 / 5月16日07:00–12:00。报到地点：杭州百瑞运河大饭店一楼大厅（浙江省杭州市拱墅区金华路58号）。会务组联系人：周思宇 135-8876-4149。</p></div></div>
+      <div class="notice-item pinned" onclick="openNoticeDetail('welcome')">
+        <div class="notice-date"><span class="day">1</span><span class="mon">MAY 2026</span></div>
+        <div class="notice-body"><span class="notice-tag">📌 置顶</span><p class="notice-title">2026健康政策与管理青年学者学术大会欢迎辞</p><p class="notice-excerpt">春风送暖，运河含章；十年之约，共赴新程。在"健康中国"战略纵深推进、中国式现代化加速演进的关键时期，我们怀着无比热忱的心情，相聚在千年运河畔的杭州……</p></div>
+      </div>
+      <div class="notice-item" onclick="openNoticeDetail('round1')">
+        <div class="notice-date"><span class="day">15</span><span class="mon">FEB 2026</span></div>
+        <div class="notice-body"><span class="notice-tag">📄 通知</span><p class="notice-title">2026健康政策与管理青年学者学术大会首轮通知</p><p class="notice-excerpt">点击查看完整通知（前往原文）。</p></div>
+      </div>
+      <div class="notice-item" onclick="openNoticeDetail('round1_5')">
+        <div class="notice-date"><span class="day">13</span><span class="mon">MAR 2026</span></div>
+        <div class="notice-body"><span class="notice-tag">📄 通知</span><p class="notice-title">2026健康政策与管理青年学者学术大会第1.5轮通知暨主题征文通知</p><p class="notice-excerpt">论坛征文通知。投稿邮箱：yfhpm2026@163.com，截稿日期：2026年4月15日。</p></div>
+      </div>
+      <div class="notice-item" onclick="openNoticeDetail('round2')">
+        <div class="notice-date"><span class="day">6</span><span class="mon">APR 2026</span></div>
+        <div class="notice-body"><span class="notice-tag">📄 通知</span><p class="notice-title">2026健康政策与管理青年学者学术大会第二轮通知</p><p class="notice-excerpt">点击查看完整通知（前往原文）。</p></div>
+      </div>
+      <div class="notice-item" onclick="openNoticeDetail('round2_5')">
+        <div class="notice-date"><span class="day">26</span><span class="mon">APR 2026</span></div>
+        <div class="notice-body"><span class="notice-tag">📄 通知</span><p class="notice-title">2026健康政策与管理青年学者学术大会第2.5轮通知</p><p class="notice-excerpt">点击查看完整通知（前往原文）。</p></div>
+      </div>
+      <div class="notice-item" onclick="openNoticeDetail('round3')">
+        <div class="notice-date"><span class="day">3</span><span class="mon">MAY 2026</span></div>
+        <div class="notice-body"><span class="notice-tag">📄 通知</span><p class="notice-title">2026健康政策与管理青年学者学术大会第三轮通知</p><p class="notice-excerpt">点击查看完整通知（前往原文）。</p></div>
+      </div>
     </div>
   </div>
   <footer><div class="footer-inner"><p class="footer-title">2026健康政策与管理青年学者学术大会</p><div class="footer-divider"></div><p>© 2026 健康政策与管理青年学者学术大会组委会 · 承办：杭州师范大学公共管理学院</p></div></footer>
 </section>
+
+<!-- ══ NOTICE DETAIL SUB-PAGE ══ -->
+<div id="notice-detail">
+  <div class="page-hero"><div class="page-hero-inner">
+    <div class="page-tag" id="nd-tag">通知公告</div>
+    <h1 class="page-title" id="nd-title">通知详情</h1>
+  </div></div>
+  <div class="page-body">
+    <button class="back-btn" onclick="backToNotices()">← 返回通知列表</button>
+    <div id="nd-meta" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:1.2rem;letter-spacing:0.04em;"></div>
+    <!-- 文本内容（用于欢迎辞） -->
+    <div id="nd-text" class="card" style="display:none;padding:2.5rem;font-family:'Noto Serif SC',serif;font-size:0.92rem;color:#dceaff;line-height:2.1;"></div>
+    <!-- 链接跳转视图（用于通知） -->
+    <div id="nd-link-host" style="display:none;">
+      <div class="card" style="padding:3rem 2.5rem;text-align:center;">
+        <div style="font-size:3rem;margin-bottom:1.2rem;opacity:0.6;">📄</div>
+        <p id="nd-link-title" style="font-family:'Noto Serif SC',serif;font-size:1.05rem;color:#fff;font-weight:600;margin-bottom:0.6rem;line-height:1.6;"></p>
+        <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.9;margin-bottom:2rem;max-width:560px;margin-left:auto;margin-right:auto;">
+          完整通知内容请前往原文页面查看。点击下方按钮在新窗口中打开。
+        </p>
+        <a id="nd-link-btn" href="#" target="_blank" rel="noopener noreferrer"
+           style="display:inline-flex;align-items:center;gap:0.6rem;padding:0.85rem 2rem;background:linear-gradient(135deg,var(--blue-mid),var(--purple));color:#fff;text-decoration:none;font-size:0.9rem;font-weight:500;letter-spacing:0.04em;border-radius:2px;transition:transform 0.2s, box-shadow 0.2s;"
+           onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(96,165,250,0.35)';"
+           onmouseout="this.style.transform='';this.style.boxShadow='';">
+          <span>前往原文</span><span style="font-size:1.1rem;">↗</span>
+        </a>
+        <p id="nd-link-url" style="margin-top:1.5rem;font-size:0.72rem;color:var(--text-muted);word-break:break-all;font-family:'Cormorant Garamond',serif;letter-spacing:0.02em;"></p>
+      </div>
+    </div>
+    <!-- 链接未填充占位 -->
+    <div id="nd-placeholder" class="placeholder-note" style="display:none;">
+      <p style="font-size:1.5rem;margin-bottom:1rem;">📄</p>
+      <p>该通知的链接尚未配置。<br>工作人员可在 <code style="color:var(--cyan-light);background:rgba(255,255,255,0.05);padding:0.1rem 0.4rem;">noticeData</code> 中填入 <code style="color:var(--cyan-light);background:rgba(255,255,255,0.05);padding:0.1rem 0.4rem;">url</code> 字段。</p>
+    </div>
+  </div>
+  <footer><div class="footer-inner"><p class="footer-title">2026健康政策与管理青年学者学术大会</p><div class="footer-divider"></div><p>© 2026 健康政策与管理青年学者学术大会组委会 · 承办：杭州师范大学公共管理学院</p></div></footer>
+</div>
 
 <!-- ══ COMMITTEE ══ -->
 <section id="committee" class="section">
@@ -913,7 +1264,7 @@
     <div class="card" style="margin-bottom:1.5rem;">
       <p style="font-size:0.72rem;color:var(--cyan);letter-spacing:0.08em;margin-bottom:0.8rem;font-weight:600;">总顾问</p>
       <p style="font-size:0.88rem;color:#fff;font-weight:600;margin-bottom:1rem;">张亮（武汉大学）　吕军（复旦大学）</p>
-      <p style="font-size:0.72rem;color:var(--cyan);letter-spacing:0.08em;margin-bottom:0.8rem;font-weight:600;">战略合作伙伴（按姓氏笔画排序）</p>
+      <p style="font-size:0.72rem;color:var(--cyan);letter-spacing:0.08em;margin-bottom:0.8rem;font-weight:600;">战略伙伴（按姓氏笔画排序）</p>
       <div style="line-height:2;"><span style="display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;font-size:0.8rem;color:var(--off-white);">王静（华中科技大学）</span><span style="display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;font-size:0.8rem;color:var(--off-white);">毛瑛（西安交通大学）</span><span style="display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;font-size:0.8rem;color:var(--off-white);">扎西达娃（西藏大学）</span><span style="display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;font-size:0.8rem;color:var(--off-white);">刘晓云（北京大学）</span><span style="display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;font-size:0.8rem;color:var(--off-white);">孙梅（复旦大学）</span><span style="display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;font-size:0.8rem;color:var(--off-white);">李瑞锋（北京中医药大学）</span><span style="display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;font-size:0.8rem;color:var(--off-white);">陈任（安徽医科大学）</span><span style="display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;font-size:0.8rem;color:var(--off-white);">陈菲（重庆医科大学）</span><span style="display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;font-size:0.8rem;color:var(--off-white);">周成超（山东大学）</span><span style="display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;font-size:0.8rem;color:var(--off-white);">周忠良（西安交通大学）</span><span style="display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;font-size:0.8rem;color:var(--off-white);">郝艳华（哈尔滨医科大学）</span><span style="display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;font-size:0.8rem;color:var(--off-white);">钱东福（南京医科大学）</span><span style="display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;font-size:0.8rem;color:var(--off-white);">徐爱军（南京中医药大学）</span><span style="display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;font-size:0.8rem;color:var(--off-white);">黄奕祥（中山大学）</span><span style="display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;font-size:0.8rem;color:var(--off-white);">康正（哈尔滨医科大学）</span><span style="display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;font-size:0.8rem;color:var(--off-white);">梁立波（哈尔滨医科大学）</span><span style="display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;font-size:0.8rem;color:var(--off-white);">焦明丽（哈尔滨医科大学）</span><span style="display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;font-size:0.8rem;color:var(--off-white);">谢慧玲（新疆医科大学）</span><span style="display:inline-block;margin:0.2rem 0.4rem 0.2rem 0;font-size:0.8rem;color:var(--off-white);">潘杰（四川大学）</span></div>
     </div>
 
@@ -938,33 +1289,24 @@
 <section id="contact" class="section">
   <div class="page-hero"><div class="page-hero-inner"><div class="page-tag">联系我们</div><h1 class="page-title">联系方式</h1></div></div>
   <div class="page-body">
-    <div class="coming-placeholder"><div class="cp-icon">📬</div><h3>联系方式即将公布</h3><p>会务联系邮箱、电话及其他联络方式将在确认后公布。</p></div>
-    <div style="margin-top:3rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5rem;">
+    <div style="margin-top:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5rem;">
       <div class="card" style="text-align:center;padding:2.5rem 1.5rem;"><div style="font-size:2rem;margin-bottom:1rem;">✉️</div><p style="font-size:0.72rem;color:var(--cyan);letter-spacing:0.1em;margin-bottom:0.5rem;">会务邮箱</p><p style="font-size:0.85rem;color:var(--cyan-light);">yfhpm2026@163.com</p></div>
-      <div class="card" style="text-align:center;padding:2.5rem 1.5rem;"><div style="font-size:2rem;margin-bottom:1rem;">📞</div><p style="font-size:0.72rem;color:var(--cyan);letter-spacing:0.1em;margin-bottom:0.5rem;">联系电话</p><p style="font-size:0.85rem;color:var(--cyan-light);">135-8876-4149<br><span style="font-size:0.75rem;color:var(--text-muted);">周思宇</span></p></div>
+      <div class="card" style="text-align:center;padding:2.5rem 1.5rem;"><div style="font-size:2rem;margin-bottom:1rem;">📞</div><p style="font-size:0.72rem;color:var(--cyan);letter-spacing:0.1em;margin-bottom:0.5rem;">会务组联系人</p><p style="font-size:0.85rem;color:var(--cyan-light);">周思宇<br><span style="font-size:0.78rem;color:var(--off-white);">135-8876-4149</span></p></div>
       <div class="card" style="text-align:center;padding:2.5rem 1.5rem;"><div style="font-size:2rem;margin-bottom:1rem;">🏫</div><p style="font-size:0.72rem;color:var(--cyan);letter-spacing:0.1em;margin-bottom:0.5rem;">承办单位</p><p style="font-size:0.85rem;color:var(--off-white);">杭州师范大学<br>公共管理学院</p></div>
       <div class="card" style="text-align:center;padding:2.5rem 1.5rem;"><div style="font-size:2rem;margin-bottom:1rem;">📌</div><p style="font-size:0.72rem;color:var(--cyan);letter-spacing:0.1em;margin-bottom:0.5rem;">会议地点</p><p style="font-size:0.82rem;color:var(--off-white);line-height:1.8;">杭州百瑞运河大饭店<br><span style="font-size:0.75rem;color:var(--text-muted);">浙江省杭州市拱墅区金华路58号</span></p></div>
+    </div>
+    <div style="margin-top:2rem;padding:1.2rem 1.5rem;background:rgba(37,99,235,0.08);border-left:2px solid var(--blue-bright);font-size:0.82rem;color:var(--off-white);line-height:1.9;">
+      <strong style="color:var(--cyan);">报到时间：</strong>2026年5月15日 09:00–22:00 ／ 5月16日 07:00–12:00<br>
+      <strong style="color:var(--cyan);">报到地点：</strong>杭州百瑞运河大饭店一楼大厅
     </div>
   </div>
   <footer><div class="footer-inner"><p class="footer-title">2026健康政策与管理青年学者学术大会</p><div class="footer-divider"></div><p>© 2026 健康政策与管理青年学者学术大会组委会 · 承办：杭州师范大学公共管理学院</p></div></footer>
 </section>
 
-<!-- VIDEO MODAL -->
-<div class="video-modal" id="videoModal" onclick="closeModal(event)">
-  <div class="modal-inner">
-    <button class="modal-close" onclick="closeModal(null)">✕</button>
-    <iframe id="modalFrame" src="" allowfullscreen></iframe>
-  </div>
-</div>
-
 <script>
-const videoData = {
-  f1: [], f2: [], f3: [], f4: [], f5: [], f6: []
-};
-
 function showSection(id) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  ['video-detail','forum-detail'].forEach(did => {
+  ['forum-detail','notice-detail'].forEach(did => {
     const el = document.getElementById(did);
     if (el) el.classList.remove('active');
   });
@@ -976,51 +1318,13 @@ function showSection(id) {
 }
 function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
 
-function openForumVideos(forumId, forumName) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  const detail = document.getElementById('video-detail');
-  detail.classList.add('active');
-  document.getElementById('vd-tag').textContent = forumName + ' · 摘要视频';
-  document.getElementById('vd-title').textContent = forumName;
-  const videos = videoData[forumId] || [];
-  const grid = document.getElementById('vd-grid');
-  const placeholder = document.getElementById('vd-placeholder');
-  if (videos.length === 0) { placeholder.style.display = 'block'; grid.style.display = 'none'; }
-  else {
-    placeholder.style.display = 'none'; grid.style.display = 'grid';
-    grid.innerHTML = videos.map(function(v) {
-      var thumb = v.cover
-        ? '<img src="' + v.cover + '" alt="' + v.title + '">'
-        : '<div class="vcard-thumb-placeholder"><span style="font-size:2rem;opacity:0.3">&#9654;</span><span>' + v.title.slice(0,12) + '&#8230;</span></div>';
-      return '<div class="vcard" onclick="openVideo(\'' + v.bvid + '\')">'
-        + '<div class="vcard-thumb">' + thumb
-        + '<div class="vcard-play-overlay"><div class="vcard-play-btn">&#9654;</div></div></div>'
-        + '<div class="vcard-info"><p class="vcard-title">' + v.title + '</p>'
-        + '<p class="vcard-meta">' + v.author + ' · ' + v.affil + '</p></div>'
-        + '</div>';
-    }).join('');
-  }
-  window.scrollTo(0,0);
-}
 function backToForums() {
-  ['video-detail','forum-detail'].forEach(did => {
+  ['forum-detail','notice-detail'].forEach(did => {
     const el = document.getElementById(did);
     if (el) el.classList.remove('active');
   });
   showSection('forums');
 }
-
-function openVideo(bvid) {
-  document.getElementById('modalFrame').src = 'https://player.bilibili.com/player.html?bvid=' + bvid + '&page=1&high_quality=1&danmaku=0';
-  document.getElementById('videoModal').classList.add('open');
-}
-function closeModal(e) {
-  if (!e || e.target === document.getElementById('videoModal')) {
-    document.getElementById('videoModal').classList.remove('open');
-    document.getElementById('modalFrame').src = '';
-  }
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(null); });
 
 function updateCountdown() {
   const diff = new Date('2026-05-15T08:30:00+08:00') - new Date();
@@ -1035,23 +1339,22 @@ updateCountdown(); setInterval(updateCountdown, 1000);
 const forumExpertData = {
   "f1": [
     {"name":"张雨萌","affil":"四川大学华西公共卫生学院","title":"副教授","field":"卫生资源配置与数智医疗"},
-    {"name":"陈晨","affil":"武汉大学公共卫生学院","title":"副教授","field":"疫苗经济学与卫生技术评估"},
+    {"name":"陈晨","affil":"武汉大学公共卫生学院","title":"副研究员","field":"疫苗经济学与卫生技术评估"},
     {"name":"刘欢","affil":"哈尔滨医科大学卫生管理学院","title":"副教授","field":"卫生应急与卫生政策"}
   ],
   "f2": [
-    {"name":"徐晨婕","affil":"杭州师范大学公共卫生学院","title":"副教授","field":"数智健康与精神健康管理"},
-    {"name":"李忠","affil":"南京医科大学医政学院","title":"副教授","field":"基层卫生治理与慢性病管理"},
-    {"name":"赵步天","affil":"北京中医药大学管理学院","title":"讲师","field":"AI与大数据医疗健康管理"}
+    {"name":"牛奔","affil":"深圳大学管理学院","title":"特聘教授、副院长","field":"医疗政策文本与LLM"},
+    {"name":"徐晨婕","affil":"杭州师范大学公共管理学院","title":"副教授","field":"数智健康与精神健康管理"},
+    {"name":"李忠","affil":"南京医科大学医政学院","title":"副教授","field":"基层卫生治理与慢性病管理"}
   ],
   "f3": [
     {"name":"白忠良","affil":"安徽医科大学卫生管理学院","title":"副教授","field":"健康老龄化与老年健康"},
-    {"name":"蒋姝函","affil":"浙江中医药大学人文与管理学院","title":"讲师","field":"健康行为与控烟研究"},
-    {"name":"蒋宛彦含","affil":"成都中医药大学公共卫生学院","title":"讲师","field":"环境健康效应评价"},
-    {"name":"王璐颖","affil":"中国药科大学国际医药商学院","title":"助理研究员","field":"药物经济学与卫生技术评估"}
+    {"name":"蒋姝函","affil":"浙江中医药大学人文与管理学院","title":"副教授","field":"健康行为与控烟研究"},
+    {"name":"蒋宛彦含","affil":"成都中医药大学公共卫生学院","title":"讲师","field":"环境健康效应评价"}
   ],
   "f4": [
-    {"name":"高婷婷","affil":"山东大学卫生管理与政策研究中心","title":"研究员","field":"老年心理健康与机构养老"},
-    {"name":"刘晨曦","affil":"华中科技大学同济医学院","title":"副教授","field":"卫生管理与医生处方行为"},
+    {"name":"高婷婷","affil":"山东大学公共卫生学院","title":"研究员","field":"老年心理健康与机构养老"},
+    {"name":"刘晨曦","affil":"华中科技大学医药卫生管理学院","title":"副教授","field":"卫生管理与医生处方行为"},
     {"name":"陆姣","affil":"西安交通大学公共政策与管理学院","title":"副教授","field":"行为决策与卫生政策评估"}
   ],
   "f5": [],
@@ -1063,10 +1366,91 @@ const forumExpertData = {
   ]
 };
 
+// ── FORUM AGENDA & PRESENTERS (per manual 2026-04-30) ──
+const forumAgendaData = {
+  "f1": [
+    {"session":"第一环节 · 13:00–14:15","host":"李佳佳（山东大学公共卫生学院 教授）","reviewer":"孙梅（复旦大学公共卫生学院 教授）","talks":[
+      {"time":"13:00–13:25","speaker":"张雨萌","affil":"四川大学公共卫生学院 副教授","topic":"面向区域均衡发展的优质医疗资源配置优化研究"},
+      {"time":"13:25–13:50","speaker":"陈 晨","affil":"武汉大学公共卫生学院 副研究员","topic":"老人疫苗接种助推策略开发、试验与评价"},
+      {"time":"13:50–14:15","speaker":"刘 欢","affil":"哈尔滨医科大学卫生管理学院 副教授","topic":"城市基层发热诊室运行的障碍因素识别与治理策略研究——基于LDA-SNA与演化博弈"}
+    ]},
+    {"session":"第二环节 · 14:30–15:50","host":"荣超（浙江中医药大学人文与管理学院副院长 教授）","reviewer":"王春平（山东第二医科大学公共卫生学院院长 教授）","talks":[
+      {"time":"14:30–14:50","speaker":"郑韵婷","affil":"福建医科大学卫生管理学院 副教授","topic":"长期护理保险参保对医疗服务利用和费用的影响：一项准实验研究"},
+      {"time":"14:50–15:10","speaker":"罗明志","affil":"四川大学旅游学院 副教授","topic":"政府健康促进行动对中老年人肥胖状况的影响研究——健康城市试点为例"},
+      {"time":"15:10–15:30","speaker":"邢怡青","affil":"郑州大学公共卫生学院 助理教授","topic":"\u201C强基层\u201D导向下DRG/DIP支付与县域医疗服务体系价值的协同机理研究——基于新结构经济学的分析框架"},
+      {"time":"15:30–15:50","speaker":"蒋俊男","affil":"中南财经政法大学公共管理学院 讲师","topic":"DRG/DIP支付改革是否有效抑制医疗军备竞赛？基于双重差分模型的实证分析"}
+    ]}
+  ],
+  "f2": [
+    {"session":"第一环节 · 13:00–14:15","host":"何国忠（昆明医科大学公共卫生学院 教授）","reviewer":"周成超（山东大学公共卫生学院 教授）","talks":[
+      {"time":"13:00–13:25","speaker":"牛 奔","affil":"深圳大学特聘教授，深圳大学管理学院副院长","topic":"面向医疗政策文本的LLM-PMC框架构建及实证研究"},
+      {"time":"13:25–13:50","speaker":"徐晨婕","affil":"杭州师范大学公共管理学院 副教授","topic":"数字精神卫生管理：交叉学科视角下的技术突破与公共卫生政策转化"},
+      {"time":"13:50–14:15","speaker":"李 忠","affil":"南京医科大学医政学院 副教授","topic":"数字技术赋能基层慢病全链条服务：社会技术系统视角"}
+    ]},
+    {"session":"第二环节 · 14:30–15:50","host":"荣超（浙江中医药大学人文与管理学院副院长 教授）","reviewer":"王春平（山东第二医科大学公共卫生学院院长 教授）","talks":[
+      {"time":"14:30–14:50","speaker":"刘 利","affil":"中国医科大学健康管理学院 教授","topic":"护士睡眠障碍预测模型的构建及预测因素的识别：基于可解释性机器学习方法"},
+      {"time":"14:50–15:10","speaker":"涂斯婧","affil":"广西中医药大学公共卫生与管理学院 副教授","topic":"数智技术赋能体卫融合服务的共生路径研究"},
+      {"time":"15:10–15:30","speaker":"赵步天","affil":"北京中医药大学管理学院 讲师","topic":"面向在线医疗社区的智能分诊与医生推荐协同机制研究"},
+      {"time":"15:30–15:50","speaker":"谢 涛","affil":"武汉大学政治与公共管理学院 弘毅博士后","topic":"基于多主体建模的医共体医保基金分配失衡演化与仿真优化"}
+    ]}
+  ],
+  "f3": [
+    {"session":"第一环节 · 13:00–14:15","host":"苗豫东（郑州大学公共卫生学院 教授）","reviewer":"张持晨（南方医科大学卫生管理学院副院长 教授）","talks":[
+      {"time":"13:00–13:25","speaker":"白忠良","affil":"安徽医科大学卫生管理学院 副教授","topic":"社会资本与老年人群健康实证探究"},
+      {"time":"13:25–13:50","speaker":"蒋姝函","affil":"浙江中医药大学人文与管理学院 副教授","topic":"无形的压力：从不确定到不公平的健康研究探索"},
+      {"time":"13:50–14:15","speaker":"蒋宛彦含","affil":"成都中医药大学公共卫生学院 讲师","topic":"社会支持对老年人睡眠质量的影响：孤独感与抑郁情绪的中介作用"}
+    ]},
+    {"session":"第二环节 · 14:30–15:50","host":"王皓翔（中山大学公共卫生学院 教授）","reviewer":"陈春（温州医科大学医学人文与管理学院 教授）","talks":[
+      {"time":"14:30–14:50","speaker":"张淑娥","affil":"哈尔滨医科大学卫生管理学院 副教授","topic":"寒地老年人共病类型受何影响？——基于CHARLS的五年实证分析"},
+      {"time":"14:50–15:10","speaker":"叶 欣","affil":"复旦大学全球公共政策研究院 青年副研究员","topic":"生命历程因素对老年期认知功能的影响：针对中国老年人的回顾性研究"},
+      {"time":"15:10–15:30","speaker":"王璐颖","affil":"中国药科大学国际医药商学院 讲师","topic":"整体健康视角下非正式照护者的疾病负担和幸福感研究"},
+      {"time":"15:30–15:50","speaker":"龙成旭","affil":"华中科技大学医药卫生管理学院 讲师","topic":"行动受限老年人的未满足临终照护需求：一项覆盖32个国家的研究"}
+    ]}
+  ],
+  "f4": [
+    {"session":"第一环节 · 13:00–14:15","host":"杨练（成都中医药大学公共卫生学院副院长 教授）","reviewer":"石昕（中国医科大学健康管理学院院长 教授）","talks":[
+      {"time":"13:00–13:25","speaker":"高婷婷","affil":"山东大学公共卫生学院 研究员","topic":"网络成瘾与负性情绪的共存模式及风险因素研究"},
+      {"time":"13:25–13:50","speaker":"刘晨曦","affil":"华中科技大学医药卫生管理学院 副教授","topic":"实现AI大模型在医疗领域健康效果转化的实践与思考"},
+      {"time":"13:50–14:15","speaker":"陆 姣","affil":"西安交通大学公共政策与管理学院 副教授","topic":"从技术可用到服务常用：e-Health服务利用现状与供需侧驱动因素研究"}
+    ]},
+    {"session":"第二环节 · 14:30–15:50","host":"熊巨洋（华中科技大学医药卫生管理学院 教授）","reviewer":"陈任（安徽医科大学卫生管理学院副院长 教授）","talks":[
+      {"time":"14:30–14:50","speaker":"王 旸","affil":"深圳大学管理学院 长聘副教授、研究员","topic":"数智赋能基层慢病共病管理：基于因果机器学习的探索"},
+      {"time":"14:50–15:10","speaker":"曹 丹","affil":"西安建筑科技大学公共管理学院 副教授","topic":"超越工具理性：人机协同诊疗模式下的患者信任重构——基于生成式AI视频情景实验的证据"},
+      {"time":"15:10–15:30","speaker":"史 钊","affil":"山东大学生活质量与公共政策研究中心 专任研究员","topic":"整体健康视角下非正式照护者的疾病负担和幸福感研究"},
+      {"time":"15:30–15:50","speaker":"苏 岱","affil":"首都医科大学 副教授","topic":"中老年人痴呆风险预测：来自19个国家前瞻性队列研究的证据"}
+    ]}
+  ],
+  "f5": [
+    {"session":"第一环节 · 13:00–14:15","host":"曾雁冰（首都医科大学公共卫生学院 教授）","reviewer":"康正（哈尔滨医科大学卫生管理学院副院长 教授）","talks":[
+      {"time":"13:00–13:25","speaker":"冯红红","affil":"中山大学公共卫生学院 博士后","topic":"DIP支付方式下脑卒中急性后期治疗连续性的现状研究"},
+      {"time":"13:25–13:50","speaker":"蔡高成","affil":"深圳大学管理学院 博士研究生","topic":"约束多目标驱动的DRG细分组方法及实证分析"},
+      {"time":"13:50–14:15","speaker":"王 权","affil":"北京大学公共卫生学院 博士研究生","topic":"基层医护人员何时提供预防性建议？来自含糖饮料咨询混合方法调查实验的证据"}
+    ]},
+    {"session":"第二环节 · 14:30–15:50","host":"林小军（四川大学公共卫生学院 副教授）","reviewer":"殷晓旭（华中科技大学公共卫生学院 教授）","talks":[
+      {"time":"14:30–14:50","speaker":"高一冉","affil":"哈尔滨医科大学卫生管理学院 博士研究生","topic":"突发公共卫生事件背景下医疗激增风险因素之间的关联：基于网络分析的视角"},
+      {"time":"14:50–15:10","speaker":"罗京京","affil":"山东大学公共卫生学院 博士研究生","topic":"中国农村老年人的童年逆境、当前逆境与认知衰弱：社会支持是否发挥作用？"},
+      {"time":"15:10–15:30","speaker":"王晨舟","affil":"华中科技大学医药卫生管理学院 博士研究生","topic":"边界性住院决策中的信息诱导、患者投诉与监管约束：来自医学生博弈实验的证据"},
+      {"time":"15:30–15:50","speaker":"顾 念","affil":"中南大学公共管理学院 博士生","topic":"医养结合何以促进老年家庭消费？——基于双重机器学习的经验证据"}
+    ]}
+  ],
+  "f6": [
+    {"session":"第一环节 · 13:00–14:20","host":"刘文彬（福建医科大学卫生管理学院 教授）","reviewer":null,"talks":[
+      {"time":"13:00–13:30","speaker":"黄奕祥","affil":"中山大学公共卫生学院 教授","topic":"立德树人・守正创新——以学生成长为中心的教研实践与浅思"},
+      {"time":"13:30–14:00","speaker":"李 莉","affil":"浙大城市学院 教授","topic":"服务产业生态为导向的科研范式转向：以老年认知障碍干预研究为例"},
+      {"time":"14:00–14:20","speaker":"——","affil":"——","topic":"第一环节互动交流"}
+    ]},
+    {"session":"第二环节 · 14:30–15:50","host":"王欣（中山大学公共卫生学院 副教授）","reviewer":null,"talks":[
+      {"time":"14:30–15:00","speaker":"井 淇","affil":"山东第二医科大学 教授","topic":"科研行路记：科研的心路历程与青年教师成长的思考"},
+      {"time":"15:00–15:30","speaker":"朱 斌","affil":"南方科技大学公共卫生及应急管理学院 助理教授","topic":"基于空间智能的急救医疗资源配置效果模拟与预测与我的个人成长"},
+      {"time":"15:30–15:50","speaker":"——","affil":"——","topic":"第二环节互动交流"}
+    ]}
+  ]
+};
+
 // ── FORUM DETAIL ──
 function openForumDetail(forumId, forumName, forumType) {
   document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
-  ['video-detail','forum-detail'].forEach(function(did) {
+  ['forum-detail','notice-detail'].forEach(function(did) {
     var el = document.getElementById(did);
     if (el) el.classList.remove('active');
   });
@@ -1075,24 +1459,99 @@ function openForumDetail(forumId, forumName, forumType) {
   document.getElementById('fd-tag').textContent = forumType + ' · ' + forumName;
   document.getElementById('fd-title').textContent = forumName;
 
-  var experts = forumExpertData[forumId] || [];
-  var container = document.getElementById('fd-experts');
-  if (experts.length === 0) {
-    container.innerHTML = '<div class="placeholder-note" style="margin-bottom:2.5rem;"><p style="font-size:1.5rem;margin-bottom:1rem;">&#128101;</p><p>本分论坛特邀专家信息将在确认后公布。</p></div>';
+  // 清空原"特邀专家"区块（不再展示）
+  var expertsContainer = document.getElementById('fd-experts');
+  if (expertsContainer) expertsContainer.innerHTML = '';
+
+  // ── 议程（直接显示）──
+  var sessions = forumAgendaData[forumId] || [];
+  var agendaHost = document.getElementById('fd-agenda-host');
+  if (sessions.length === 0) {
+    agendaHost.innerHTML = '<div class="placeholder-note"><p style="font-size:1.5rem;margin-bottom:1rem;">&#128203;</p><p>本分论坛详细议程将在确认后公布，敬请期待。</p></div>';
   } else {
-    var isSpecial = (forumId === 'f6');
-    var grad = isSpecial ? 'linear-gradient(135deg,#b45309,#d97706)' : 'linear-gradient(135deg,var(--blue-mid),var(--purple))';
-    var cards = experts.map(function(e) {
-      return '<div class="speaker-card">'
-        + '<div class="speaker-avatar" style="background:' + grad + ';">' + e.name[0] + '</div>'
-        + '<p class="speaker-name">' + e.name + '</p>'
-        + '<p class="speaker-affil">' + e.affil + '<br>' + e.title + ' · ' + e.field + '</p>'
-        + '</div>';
+    var sessionsHtml = sessions.map(function(s) {
+      var headerLine = '<div style="margin-bottom:0.6rem;font-size:0.9rem;color:#fff;font-weight:600;font-family:\'Noto Serif SC\',serif;">' + s.session + '</div>'
+        + '<div style="margin-bottom:1rem;font-size:0.78rem;color:var(--text-muted);line-height:1.8;">主持人：' + s.host
+        + (s.reviewer ? '　·　点评人：' + s.reviewer : '') + '</div>';
+      var talkRows = s.talks.map(function(t) {
+        return '<div class="agenda-item"><div class="agenda-time">' + t.time + '</div>'
+          + '<div class="agenda-content"><h4>' + t.topic + '</h4>'
+          + '<p>' + t.speaker + '　·　' + t.affil + '</p></div></div>';
+      }).join('');
+      return '<div style="margin-bottom:2rem;padding:1.2rem 1.5rem;background:rgba(37,99,235,0.06);border-left:2px solid var(--blue-bright);">'
+        + headerLine + talkRows + '</div>';
     }).join('');
-    container.innerHTML = '<h2 class="section-heading" style="font-size:1rem;">特邀专家</h2>'
-      + '<div class="speakers-grid">' + cards + '</div>';
+    agendaHost.innerHTML = sessionsHtml;
   }
   window.scrollTo(0,0);
+}
+
+// ── NOTICES ──
+// ⚠️ 工作人员维护说明：
+//   填写每条通知的 url 字段（指向原通知页面，例如公众号文章、学院官网通告链接）。
+//   url 留空字符串("")则显示"链接尚未配置"占位。
+//   欢迎辞 type:'text' 直接修改 content 字段即可（保留 \n\n 作为段落分隔）。
+const noticeData = {
+  "welcome": {
+    type: "text",
+    title: "2026健康政策与管理青年学者学术大会欢迎辞",
+    meta: "2026年5月1日 · 健康政策与管理青年学者学术大会组委会 · 杭州师范大学公共管理学院",
+    tag: "📌 置顶 · 欢迎辞",
+    content: "尊敬的各位专家、各位青年学者，亲爱的同仁们：\n\n春风送暖，运河含章；十年之约，共赴新程。在\u201C健康中国\u201D战略纵深推进、中国式现代化加速演进的关键时期，我们怀着无比热忱的心情，相聚在千年运河畔的杭州，共同迎来2026健康政策与管理青年学者学术大会的隆重召开。首先，我们向远道而来、齐聚一堂的各位专家、青年同仁，表示最热烈的欢迎和最诚挚的问候！向长期以来关心支持学术大会发展、助力卫生政策与管理学科进步的各界朋友，致以最衷心的感谢！\n\n自2016年创办以来，健康政策与管理青年学者学术大会（论坛）已走过十载春秋，成为我国卫生政策与管理领域凝聚青年力量、交流学术成果、培育学术共同体的重要平台。十年来，我们见证着一代又一代青年学者深耕不辍，立足中国实践，聚焦民生关切，在卫生政策研究、健康治理创新的道路上勇毅前行，为推动学科发展、助力健康中国建设注入了蓬勃的青春动能。2026年，学术大会迈入新的十年，我们选择落地杭州、扎根运河之畔，既是致敬这条\u201C流动的制度史\u201D\u201C可见的治理史\u201D所承载的中国治理智慧与文化底蕴，更是希望以运河为媒，联结南北智慧、汇聚东西力量，让青年学者在千年文脉的滋养中，探寻卫生政策与管理自主知识体系的构建之路。\n\n杭州是一座兼具历史底蕴与创新活力的城市，更是一座将健康理念融入城市治理血脉的城市。这里，千年运河滋养着城市的人文肌理，也见证着杭州在健康治理、生态保护、公共服务等方面的实践探索，与本届学术大会\u201C传承与创新\u201D的主旨高度契合。如今的杭州，清水长流、岸绿景美，运河生态与文化资源有机融合，为我们探讨健康治理现代化提供了生动的实践样本。希望各位同仁在参会之余，能漫步运河两岸，感受千年水脉的文化魅力，体会杭州健康治理的实践温度，在山水人文中汲取学术灵感。\n\n青年兴则学科兴，青年强则事业强。各位青年学者是健康政策与管理学科的未来，是推动健康中国建设的新生力量。愿大家以本次学术大会为契机，坚守学术初心，传承优良传统，勇于创新突破，在交流中凝聚共识，在研讨中深化思考，在合作中共同成长，把论文写在祖国大地上，把研究做在民生需求处，用青春智慧与实干担当，为构建卫生政策与管理自主知识体系、推进健康中国建设贡献青年力量。\n\n最后，衷心祝愿各位专家、各位同仁在杭州期间交流愉快、收获丰硕、身心康健！预祝本次大会圆满成功！\n\n谢谢大家！\n\n———————————————\n健康政策与管理青年学者学术大会组委会\n杭州师范大学公共管理学院\n2026年5月"
+  },
+  "round1":   { type:"link", title:"2026健康政策与管理青年学者学术大会首轮通知",          meta:"2026年2月15日 · 首轮通知",   tag:"📄 通知", url:"https://mp.weixin.qq.com/s/vKqsF1aVYhcJKkWw_y6X0A" },
+  "round1_5": { type:"link", title:"2026健康政策与管理青年学者学术大会第1.5轮通知暨主题征文通知", meta:"2026年3月13日 · 第1.5轮通知", tag:"📄 通知", url:"https://mp.weixin.qq.com/s/zmj24qDywVNk11Fr_RLLQA" },
+  "round2":   { type:"link", title:"2026健康政策与管理青年学者学术大会第二轮通知",        meta:"2026年4月6日 · 第二轮通知", tag:"📄 通知", url:"https://mp.weixin.qq.com/s/G3qFA83Qn3TNhjUaUovB7g" },
+  "round2_5": { type:"link", title:"2026健康政策与管理青年学者学术大会第2.5轮通知",       meta:"2026年4月26日 · 第2.5轮通知", tag:"📄 通知", url:"https://mp.weixin.qq.com/s/gFeR_a6OS9CzPt7i2tN-8A" },
+  "round3":   { type:"link", title:"2026健康政策与管理青年学者学术大会第三轮通知",        meta:"2026年5月3日 · 第三轮通知", tag:"📄 通知", url:"https://mp.weixin.qq.com/s/lD9hxof0RDi9bgv0aerCVQ" }
+};
+
+function openNoticeDetail(noticeId) {
+  document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+  ['forum-detail','notice-detail'].forEach(function(did) {
+    var el = document.getElementById(did);
+    if (el) el.classList.remove('active');
+  });
+  var data = noticeData[noticeId];
+  if (!data) return;
+  document.getElementById('notice-detail').classList.add('active');
+  document.getElementById('nd-tag').textContent = data.tag || '通知公告';
+  document.getElementById('nd-title').textContent = data.title;
+  document.getElementById('nd-meta').textContent = data.meta || '';
+
+  var textBox = document.getElementById('nd-text');
+  var linkHost = document.getElementById('nd-link-host');
+  var placeholder = document.getElementById('nd-placeholder');
+
+  textBox.style.display = 'none';
+  linkHost.style.display = 'none';
+  placeholder.style.display = 'none';
+
+  if (data.type === 'text') {
+    var paragraphs = data.content.split('\n\n').map(function(p) {
+      return '<p style="margin-bottom:1.1rem;">' + p.replace(/\n/g,'<br>') + '</p>';
+    }).join('');
+    textBox.innerHTML = paragraphs;
+    textBox.style.display = 'block';
+  } else if (data.type === 'link') {
+    if (data.url && data.url.length > 0) {
+      document.getElementById('nd-link-title').textContent = data.title;
+      document.getElementById('nd-link-btn').href = data.url;
+      document.getElementById('nd-link-url').textContent = data.url;
+      linkHost.style.display = 'block';
+    } else {
+      placeholder.style.display = 'block';
+    }
+  }
+  window.scrollTo(0,0);
+}
+
+function backToNotices() {
+  ['forum-detail','notice-detail'].forEach(function(did) {
+    var el = document.getElementById(did);
+    if (el) el.classList.remove('active');
+  });
+  showSection('notices');
 }
 
 function switchDay(idx) {
@@ -1102,6 +1561,113 @@ function switchDay(idx) {
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').style.boxShadow = window.scrollY > 10 ? '0 4px 24px rgba(0,0,0,0.5)' : '';
 });
+
+// ── CLOUD VIDEOS DATA & RENDERING ──
+const cloudVideos = [{"n":"安素雅","s":"西安交通大学","t":"功能障碍老年人灾难性卫生支出与长期护理保险的关联","b":"BV1r8RsB3Eb8"},{"n":"白思怡","s":"南方医科大学","t":"Sleep Duration, Longitudinal Trajectories, and Bidirectional Associations with Multimorbidity among Chinese Middle Aged and Older Adults: A National Cohort Study based on CHARLS","b":"BV1dWdFBwEqS"},{"n":"白燕","s":"复旦大学附属中山医院","t":"基于KANO模型的公立医院青年科技工作者发展需求定量研究","b":"BV1FZdwBmEB1"},{"n":"暴嘉欣","s":"山西医科大学","t":"传承与创新并轨-我国基层卫生治理自主知识体系的理论构建与实践探索","b":"BV1yQdwBDEtJ"},{"n":"蔡鑫鑫","s":"南京医科大学","t":"数智技术对居民基层卫生服务价值共创行为的影响价值感知的多重中介作用","b":"BV1CQdwBDEqr"},{"n":"曹俊杰","s":"山东大学","t":"Cumulative disadvantage in education and progression of physical mental cognitive multimorbidity evidence","b":"BV1yQdwBDEuB"},{"n":"曹梦蕾","s":"安徽中医药大学","t":"Leadership and Intrinsic Motivation for Interprofessional Collaboration in Healthcare The Mediating Roles of Meaning and Competence and the Moderating Role of People Centered Culture","b":"BV1nZdwBmEGP"},{"n":"曾煌尹","s":"深圳大学","t":"“检身”何以“疗心”？免费体检对老年人心理健康的保护效应评估：基于机器学习的因果推断","b":"BV1dWdFBwEqX"},{"n":"柴语鹃","s":"深圳大学","t":"全国药品集采政策演变与市场调节-基于药企供应地选择行为及动因解析的视角","b":"BV1c3dFB3EC7"},{"n":"柴志伟","s":"石河子市人民医院","t":"行政吸纳型集权结构下的县域医共体运行逻辑与潜在风险——基于新疆生产建设兵团第八师石河子市的案例研究","b":"BV1fLdFBqEPh"},{"n":"常汇晨","s":"山东师范大学","t":"Perceived red tape and occupational commitment among primary care physicians","b":"BV1vTdAB6EQ4"},{"n":"车欣","s":"山东大学","t":"Longitudinal Relations between Sleep Quality, Psychological Distress and Cognitive Function among Rural Older Adults A Cross-Lagged Network Analysis","b":"BV1yQdwBDEE6"},{"n":"陈超亿","s":"哈尔滨医科大学","t":"A Socioecological Model of Multilevel Determinants for Proactive Health Behaviors among Chinese Adults with Chronic Diseases","b":"BV1BcdAByE8b"},{"n":"陈聪","s":"内蒙古医科大学","t":"中国卫生政策与管理自主知识体系的建构路径 基于县域医共体改革的实证分析","b":"BV1dWdFBwEk8"},{"n":"陈聪","s":"内蒙古医科大学","t":"数智赋能与治理创新：数据驱动下卫生政策自主知识体系的建构路径/","b":"BV1dWdFBwEbV"},{"n":"陈俊利","s":"山东第二医科大学","t":"基于传统统计学方法与机器学习算法的社区Ⅱ型糖尿病患者生活质量风险因素识别与策略集研制","b":"BV1PQdwBQEbQ"},{"n":"陈珺怡","s":"华中科技大学","t":"基于米特-霍恩模型的西部某省县域“两病”门诊用药保障政策执行分析","b":"BV1jWdFBAEBU"},{"n":"陈梦晨","s":"浙江中医药大学","t":"SFIC模型视角下青少年心理健康协同治理的困境与对策","b":"BV1zcdAB1EJg"},{"n":"陈茜薇","s":"广州医科大学","t":"互联网使用对老年人身心健康的影响研究","b":"BV1dWdFBwEkx"},{"n":"陈芮","s":"山东大学","t":"不同社会参与模式与中国老年人孤独感的关联：是否存在本地-随迁差异？","b":"BV1oWdFBwEFu"},{"n":"陈若兮","s":"华中科技大学","t":"DIP付费改革对民营医院住院服务给行为的影响研究","b":"BV1dWdFBwE5w"},{"n":"陈胜亮","s":"中山大学","t":"Association of Hospital Bed and Primary Care Supply With Avoidable Hospitalizations in China A Longitudinal Panel Study, 2016–2023","b":"BV1p9dwBnEFY"},{"n":"陈施佳","s":"泰国格乐大学","t":"泰国麻醉药物（大麻）政策执法与市场调查","b":"BV1vTdAB6EQ7"},{"n":"陈霞","s":"安徽医科大学","t":"安徽省优质医疗资源区域配置差异性研究","b":"BV1jWdFBAEbc"},{"n":"成家佳","s":"安徽医科大学","t":"基于XGBoost和可解释性工具的老年人主动健康知信行的影响因素研究","b":"BV1PQdwBQEwY"},{"n":"程林","s":"广州市疾病预防控制中心（广州市卫生监督所）","t":"疾控机构改革政策执行的制约因素与推进策略研究","b":"BV1qcdAByEZ6"},{"n":"褚艳茹","s":"山东第二医科大学","t":"基于彩虹模型的传染病医防融合问题界定研究","b":"BV1eARsBfEgK"},{"n":"崔金鑫","s":"郑州大学","t":"不同模式整合型医疗卫生服务体系交易费用的比较研究","b":"BV1fLdFBqEPv"},{"n":"邓欢恬","s":"福建医科大学","t":"电子健康素养对社区中老年慢性病患者自我管理的影响研究","b":"BV1ELdFBBEw2"},{"n":"邓齐文","s":"福建医科大学","t":"慢性乙型肝炎患者治疗依从性路径的社会经济差异","b":"BV1fLdFBqE4K"},{"n":"邓茹月","s":"南京市中医院","t":"健康社会决定因素对中国老年人认知功能动态转变的预测作用:基于5年纵向数据的实证研究","b":"BV1BcdAByE9W"},{"n":"邓松涛","s":"北京中医药大学","t":"老年人对于智慧健康服务使用意愿影响因素的Meta分析","b":"BV1ELdFBBEii"},{"n":"邓子安","s":"深圳大学","t":"青少年自伤风险预警体系中睡眠指标的筛查价值与管理策略优化：基于全国多中心样本的网络分析","b":"BV1BLdFBBEtt"},{"n":"翟永金","s":"山西医科大学","t":"基于健康生态学模型下老年慢性病共病患者抑郁现状及影响因素研究","b":"BV1PQdwBQEbZ"},{"n":"刁佳怡、陈嘉琦、袁莎莎","s":"中国医学科学院","t":"基层整合服务模式对居家老年轻度认知障碍人群健康相关指标的影响-一项整群随机对照试验研究]","b":"BV1PQdwBQEmz"},{"n":"丁钾宁","s":"杭州师范大学","t":"浙江省老年人口与医疗资源的匹配关系及影响因素","b":"BV1eARsBfEYP"},{"n":"董世菊","s":"山东大学","t":"Internet Usage, Social Participation, and Depression Symptoms Among Middle-Aged and Older Chinese Individuals Before and During the COVID-19 Pandemic: Evidence From the China Health and Retirement Longitudinal Observational Study","b":"BV1YARsBfEQW"},{"n":"董晓雪","s":"郑州大学","t":"我国医疗服务技术劳务价值相关政策量化分析","b":"BV1F5dFBuEcQ"},{"n":"董心月","s":"华中科技大学","t":"Provider Strategic Responses to a Blended Hospital Payment Reform in China：Evidence on Patient Selection","b":"BV1iTdAB6EcW"},{"n":"窦菁","s":"山东大学","t":"Mapping breast and cervical cancer screening strategies along the Intervention Ladder a systematic review","b":"BV1vTdAB6Edi"},{"n":"杜梦奇","s":"山东第一医科大学","t":"我国分级诊疗政策文本量化分析-基于“政策工具-政策目标-政策效力”三维框架","b":"BV1vTdAB6EQi"},{"n":"杜心楠","s":"复旦大学","t":"中国慢性病防控政策的演变历程","b":"BV1J5dFBuEuV"},{"n":"杜媛泽","s":"山东第二医科大学","t":"基于LDA模型与政策工具的中国疫苗管理政策研究","b":"BV1eARsBfEWt"},{"n":"范成鑫","s":"山东第二医科大学","t":"深化公立医院改革背景下数字健康素养对患者价值共创行为的影响机制研究","b":"BV1iTdABrEiZ"},{"n":"范肖赫","s":"大连医科大学","t":"老年痴呆风险的跨国比较及中国启示——基于衰弱与社会经济地位的纵向分析","b":"BV1YARsBfEQi"},{"n":"封雷","s":"郑州大学","t":"年人常见慢病管理不足的社会经济地位差异及政策启示","b":"BV1vTdAB6EkX"},{"n":"冯读贤","s":"四川大学华西医院","t":"典型国家医疗卫生服务体系公益性特征分析及启示","b":"BV1FZdwBmEJw"},{"n":"冯洁","s":"重庆医科大学","t":"基于机器学习模型成年人强迫症状及其健康生态学因素分析","b":"BV1c8RsBGEyE"},{"n":"冯俊妃","s":"西安交通大学","t":"内外在激励感知的契合与失衡","b":"BV1dTdAB6E88"},{"n":"冯文佳","s":"山东第二医科大学","t":"代际关系对患有多重慢性疾病的老年患者抑郁症状的影响-自评健康和幸福感的中介作用","b":"BV1PQdwBQELd"},{"n":"傅柳婕","s":"北京中医药大学","t":"基于健康中国视域下的中医药政策三维量化研究","b":"BV1jWdFBAEqg"},{"n":"高逢辰","s":"昆明医科大学","t":"云南省大学生健康素养现状及提升路径分析 视频","b":"BV1dWdFBwEkw"},{"n":"高珊珊","s":"盐城市妇幼保健院","t":"基于扎根理论的生育友好医院生态协同治理模型研究","b":"BV1JZdwBmE9E"},{"n":"高一冉","s":"哈尔滨医科大学","t":"黑龙江省医疗浪涌风险影响因素及驱动路径研究","b":"BV1H8RsB3EM5"},{"n":"高愉斐","s":"宁夏医科大学","t":"DRG政策全面实施后银川市三甲医疗机构运营效率对比研究","b":"BV1dWdFBwE5i"},{"n":"高治楠","s":"安徽医科大学","t":"基于自然实验的激励与具身体验对减重行为维持的协同影响机制研究","b":"BV1PQdwBQEAd"},{"n":"戈倩倩","s":"杭州师范大学","t":"基于NetLogo平台的大病保险多主体博弈仿真模型构建研究","b":"BV1eARsBfEY5"},{"n":"宫琳婧","s":"山东大学","t":"老年人健康不对称性与医疗服务利用 一项涵盖17个国家的纵向研究","b":"BV1vTdAB6EQB"},{"n":"宫一凡","s":"中国医科大学","t":"When Body Image and Fear Collide A Fuzzy-Set Qualitative Comparative (fsQCA) and Mediation Analysis of Sufficient Pathways to Post-Traumatic Stress in Breast Cancer Survivors","b":"BV1yDdwBHE8t"},{"n":"巩超","s":"北京大学","t":"Economic Evaluation of Population-Level Dementia Prevention Strategies in China: Informing Policy and Public Health Action","b":"BV1eARsBfEYx"},{"n":"巩泓辰","s":"温州医科大学","t":"健康促进型领导对护士创新工作行为的影响机制-角色宽度自我效能感与权力感的作用","b":"BV1f5dFBMErT"},{"n":"谷兰凌","s":"首都医科大学附属北京安定医院","t":"基于词频分析的我国医疗卫生领域智慧服务政策研究","b":"BV1yDdwBHEjx"},{"n":"顾欣雨","s":"杭州师范大学","t":"Digital Empowerment or Digital Vulnerability A Mixed Methods Study of Patient Digital Healthcare Experiences and the Patient Physician Relationship","b":"BV1r9dwBJEYZ"},{"n":"郭佳盈","s":"天津医科大学","t":"制度驱动与三流耦合：天津市糖尿病门诊按人头付费政策议程形成机制研究","b":"BV1dWdFBwErf"},{"n":"郭力宁、张研","s":"华中科技大学","t":"互联网诊疗完成度对患者感知价值的影响机制研究：一项在线诊疗行为实验","b":"BV1eARsBfEYt"},{"n":"郭莉娜","s":"杭州师范大学","t":"医疗服务供给如何与经济协同发展：耦合路径及其驱动机制.mp4","b":"BV1LWdFBAEok"},{"n":"郭晓晓","s":"郑州大学","t":"健康生活方式对认知结局的纵向影响-基于中国北方队列的因果推断研究","b":"BV1J5dFBuEEt"},{"n":"郭雅林","s":"山东第一医科大学","t":"人工智能赋能基层首诊：破解困境的路径与机理研究","b":"BV1eARsBfEWY"},{"n":"郭玉芳","s":"山东大学","t":"基于增能理论的数字健康技术对社区失能老人自我管理效能感的影响机制研究","b":"BV16ZdwB2E7r"},{"n":"郭韵曦","s":"天津医科大学","t":"基于原子图谱法的医疗机构“公益性”概念界定——面向卫生政策自主知识体系的方法论实践","b":"BV1eARsBfEYY"},{"n":"郭韵曦","s":"天津医科大学","t":"区域卫生应急协同何以受阻？京津冀跨区域治理的运行梗阻与制度调适","b":"BV1vTdAB6ECF"},{"n":"郭韵曦","s":"天津医科大学","t":"天津市传染病应急预案体系实施效能与优化路径-基于多元数据的实证分析","b":"BV1iTdAB6Ega"},{"n":"韩嘉欣","s":"郑州大学","t":"Spatial Heterogeneity and Influencing Factors of Cognitive Impairment among Elderly Hypertensive Patients Evidence from Rural Communities in China","b":"BV1yDdwBHECS"},{"n":"何梦杰","s":"浙江传媒学院","t":"角色互动与场域共建：网红医生账号短视频与评论区的内容分析","b":"BV1nZdwBmE46"},{"n":"何艳平","s":"武汉大学","t":"慢性病家庭卫生财务风险的精准预测及特征研究 基于可解释机器学习模型的证据","b":"BV1YARsBfEQX"},{"n":"侯玉竹","s":"哈尔滨医科大学","t":"基于LDA主题模型的涉医网络舆情影响因素研究","b":"BV1fLdFBqENU"},{"n":"候欣佳","s":"山东大学","t":"Stability and Change in Problematic Media Use Among ChinesePreschool Children: Multilevel Predictors and Group Comparisons by Biological Sex and Gender RoleIdentity via Random Intercept Latent Transition Analysis","b":"BV1n8RsB3E2h"},{"n":"胡洪瑜","s":"兰州大学","t":"医保广覆盖之后，公众是否真正感到被保障？——基于People's Voice Survey的卫生体系信心研究","b":"BV1dWdFBwEkg"},{"n":"胡新洁","s":"山东大学","t":"供方视角下肿瘤心理服务开展现状、实施困境与对策建议的质性研究","b":"BV16ZdwB2EAV"},{"n":"胡烨昕、张皓","s":"杭州师范大学","t":"From Tool to Shaper:How AI Reshapes Patients'Perception, Behavior, and Psychological Structure in Healthcare","b":"BV15PRsBFEHa"},{"n":"黄爱嘉","s":"华东理工大学","t":"控费与价值之间：上海市DRG付费政策演进的文本分析","b":"BV1S3RsBWEkE"},{"n":"黄佳微","s":"安徽医科大学","t":"TOPSIS法的长三角地区基层医疗卫生机构服务能力综合评价","b":"BV1nZdwBmEGg"},{"n":"黄珈琪","s":"广州医科大学","t":"基于交叉滞后模型的农村老年人社会支持、心理损耗与睡眠质量的关系研究-以L市为例","b":"BV1vTdAB6EQm"},{"n":"黄晋驰，胡敏，陈文","s":"复旦大学","t":"我国药品联动管理政策LDA主题建模量化研究——基于政策工具、政策动力和政策目标的三维分析框架","b":"BV1YARsBfEmU"},{"n":"黄晋驰，胡敏，陈文","s":"复旦大学","t":"数智赋能还是技术悬浮：数智化技术赋能县域医共体的作用机制与分化逻辑——基于计算扎根理论和fsQCA的混合案例研究","b":"BV1eARsBfEYR"},{"n":"黄婉婷","s":"广州医科大学","t":"性别视角下中国贫困大学生心理健康状况的Meta分析","b":"BV1vTdAB6EQf"},{"n":"黄雅薇","s":"西安交通大学","t":"Promoting equality in utilization of basic public health services in China: The role of the Family Doctor Contract Service","b":"BV1H8RsB3E7o"},{"n":"黄艺","s":"山东大学","t":"Inpatients’Preferences for Online Medical Consultation Evidence from a Discrete Choice Experiment in China","b":"BV1sDdwBpEQS"},{"n":"贾慕玥","s":"华中科技大学","t":"供方视角下优化辅助生殖服务供给质量的质性研究-以湖北省为例","b":"BV1yDdwBHE6z"},{"n":"贾宇衡","s":"复旦大学","t":"超大城市紧密型城市医疗集团一体化运行的内涵与实现路径研究","b":"BV1vTdAB6EK2"},{"n":"江冬冬","s":"东南大学附属南通市第一人民医院","t":"The mediating role of Subjective fatigue between psychological stress and systemic inflammation in working women: a cross sectional study in Nantong City, China","b":"BV1ondFBPE43"},{"n":"江浪","s":"广西中医药大学","t":"中国药品集中带来采购政策对广西降压药价格的影响机制","b":"BV16ZdwB2EcD"},{"n":"姜静怡","s":"山东第二医科大学","t":"上海与山东安宁疗护服务机构特征、公众互动实践及职责认知比较研究","b":"BV1dTdAB6Ew7"},{"n":"姜淑琴","s":"山东大学","t":"Sleep quality trajectories and intrinsic capacity among rural older adults in Shandong Province, China: a longitudinal study","b":"BV1dWdFBwE5y"},{"n":"焦丹阳","s":"北京大学第一医院、首都医科大学","t":"青少年与高龄妊娠结局风险差异及围产期脆弱的联合效应","b":"BV1YARsBfEUc"},{"n":"金佳瑶","s":"杭州师范大学","t":"Implementation Stategies for Health Impact Assessment among Departments with","b":"BV1FZdwBmEWY"},{"n":"金玉、龚光雯、闵锐","s":"华中科技大学同济医学院","t":"城市定制型商业医疗保险运行实践与续保行为研究-以“威你保”为例","b":"BV1NDdwBpErr"},{"n":"凯丽漫","s":"广州中医药大学","t":"生物制剂治疗中国中重度克罗恩病患者的快速卫生技术评估-基于本土证据的临床与经济学综合分析","b":"BV1eARsBfEgf"},{"n":"劳樱莹","s":"杭州师范大学","t":"浙江省慢病患者基层中医药服务利用行为研究","b":"BV1QMRsBxEu1"},{"n":"李柏昱","s":"杭州师范大学","t":"门诊共济保障实施效果影响因素研究","b":"BV11DdwBpEnS"},{"n":"李炳松","s":"山东大学","t":"Parental self-medication with antibiotics and children’s antibiotic-related knowledge in China insights from two national surveys","b":"BV1hMRsBxESY"},{"n":"李博嘉","s":"复旦大学","t":"上海市三级医院肿瘤随访现状分析","b":"BV1GMRsB4Ebg"},{"n":"李灿","s":"内蒙古医科大学","t":"基于匿名标准化患者的西安市验光服务流程规范性评估研究","b":"BV1k9dwBJEbT"},{"n":"李承程、苏红晓、王春平、王宁、许云皓","s":"滨州市疾病预防控制中心","t":"山东省电子设备制造业劳动者心理健康现状及影响因素分析","b":"BV1JLdFBBEKr"},{"n":"李丹丹","s":"山东第一医科大学","t":"院价值共创视角下三医联动的协同共识创建与优化路径研究——以山东省鱼台县人事协同制度创新为例","b":"BV1dWdFBwEDo"},{"n":"李德华","s":"安徽医科大学","t":"供需匹配视角下长江经济带基层医疗卫生机构资源配置与服务利用耦合协调关系研究","b":"BV1zZdwB2EdV"},{"n":"李广樱","s":"郑州大学","t":"就业质量、社会支持及其交互作用对流动人口生育意愿的影响——基于实证的流动人口生育支持政策的关键优化维度探索","b":"BV1XMRsBxEFx"},{"n":"李浩祺","s":"山东第二医科大学","t":"老年慢性共病患者慢性疼痛与抑郁症状的关系-睡眠质量和衰弱的链式中介作用","b":"BV1sDdwBpEXK"},{"n":"李慧萱","s":"广西中医药大学","t":"分级诊疗背景下老年慢病患者基层就诊意愿的影响机制研究","b":"BV1H8RsB3EE4"},{"n":"李季宁","s":"山西医科大学","t":"Perceptions, opportunities and barriers of social engagement among the Chinese older adults a qualitative study","b":"BV1FZdwBmE8s"},{"n":"李佳蔚","s":"开平市卫生健康局、中山大学","t":"我国基层医务人员工作与生活质量-影响因素与干预策略评述","b":"BV1iTdAB6EF1"},{"n":"李嘉艺、王冠敏、贺知菲","s":"西南政法大学","t":"健康传播视域下老年人健康信息获取行为的法律保障研究","b":"BV1BFdcBqEwx"},{"n":"李凯茹","s":"山东第二医科大学","t":"社区老年人肌少症风险与认知功能的关系：抑郁的中介作用和社会支持的调节效应","b":"BV1aMRsBxEhx"},{"n":"李可欣","s":"大连医科大学","t":"睡眠时长与行为对老年人群高血压与糖尿病共病风险的跨国比较-基于CHARLS与SHARE的研究","b":"BV1w8RsBGEjh"},{"n":"李泯霖","s":"东南大学","t":"潍坊市公立医院编制人事薪酬制度一体化改革的实践探索","b":"BV1BcdAByEeU"},{"n":"李明月","s":"北京大学","t":"Health Workers'Experiences of Integrating Artificial Intelligence in Service Delivery: a mixed-methods systematic review","b":"BV1hMRsBxEi8"},{"n":"李香玮","s":"内蒙古大学","t":"医联体利益分配格局构建的国际经验镜鉴","b":"BV1f5dFBME2x"},{"n":"李雪琪","s":"成都市第一人民医院","t":"公立医疗机构实施人工智能驱动的综合房颤管理系统与动态全病程管理：一项多科室诊疗效率中的应用评估","b":"BV11DdwBHEGo"},{"n":"李燕卿","s":"北京大学","t":"2010–2024年我国农村订单定向免费医学生招生规模与专业结构变化 -基于省级与县级数据的实证研究","b":"BV1J5dFBuEGF"},{"n":"李媛焓、房亚娟、陈晓婉、倪申丹、张堂雨","s":"安徽医科大学","t":"Quantitative Evaluation and Comparative Analysis of National and Provincial National Regional Medical Center Policies Based on the PMC-Index Model","b":"BV13edFBxEBp"},{"n":"李志广、陈仲娟、赵文武、谢瑞瑾*","s":"安徽中医药大学","t":"基于双重差分的DRG支付方式改革对中医优势病种住院费用的影响研究","b":"BV1w9dwBnEaF"},{"n":"栗玉晓、张皓","s":"杭州师范大学","t":"叙事医学视角下患者报告产出工具的开发","b":"BV1zZdwB2EWb"},{"n":"林小洁","s":"中山大学","t":"我国基层卫生服务与管理评价指标体系研究进展","b":"BV1aMRsBxEhB"},{"n":"林伊晨","s":"浙江中医药大学","t":"《真实世界背景下中医人工智能应用的伦理法律困境纾解》","b":"BV1dWdFBwEQM"},{"n":"林梓","s":"南京医科大学","t":"数字参与对医疗服务利用的影响：城乡差异与服务类型差异的实证分析——基于CHARLS面板数据","b":"BV1n8RsB3EqL"},{"n":"刘果鑫","s":"上海交通大学","t":"Effectiveness of Hearing Aids and Its Association with Educational and Other Possible Factors among Older Adults","b":"BV1zZdwB2ESf"},{"n":"刘卉芸","s":"四川大学","t":"政策干预与青少年心理健康","b":"BV1nodwBEECg"},{"n":"刘慧","s":"山西医科大学","t":"中国农村中老年人多病共存模式与基层健康管理的研究—基于医疗服务利用的实证分析","b":"BV1jndFBNECW"},{"n":"刘检州","s":"山西医科大学","t":"卫生管理视域下医学院校学生心理健康治理研究-应对方式在医学生人格特质与学业压力关联中的中介作用","b":"BV13edwBPEfz"},{"n":"刘锦如","s":"山东大学","t":"基于模糊集的县级医院抗菌药物使用强度影响因素的定性比较分析","b":"BV1rRdwBUEQC"},{"n":"刘利","s":"中国医科大学","t":"Heterogeneity of mobility limitation trajectories among Chinese older couples: Impact of baseline biopsychosocial characteristics and subsequent well-being","b":"BV1dWdFBwEqd"},{"n":"刘梦瑶","s":"山东第二医科大学","t":"大学生焦虑、抑郁在专业认同和课堂沉默间的链式中介效应研究","b":"BV1QedwBAEUW"},{"n":"刘晴","s":"山东第二医科大学","t":"医学院校公共事业管理专业学生“心理—行为”类型识别 一项潜在剖面分析","b":"BV16odwB7EvZ"},{"n":"刘善影","s":"福建医科大学","t":"Behavioral Changes and Depressive Symptoms Among Chinese Older Adults During the Pandemic A Network Analysis for Policy Implications","b":"BV1codwBEEYP"},{"n":"刘玮","s":"哈尔滨医科大学","t":"中国老年人健康信息素养概念界定、结构维度与测评量表开发","b":"BV1dndFBPEpz"},{"n":"刘永文","s":"国家卫生健康委卫生发展研究中心","t":"重大呼吸道传染病疫情社区情景要素及多级递阶结构分析","b":"BV16odwB7EvH"},{"n":"刘玉琢","s":"山东第二医科大学","t":"我国社区居家养老政策文本量化分析","b":"BV16odwB7EZU"},{"n":"刘泽霖","s":"内蒙古大学","t":"数字技术应用的相悖结果何以产生？基于N省基本公共卫生服务项目供给的扎根理论研究","b":"BV1ondFBPEED"},{"n":"龙成旭","s":"华中科技大学","t":"Global patterns and multisectoral drivers of out-of-pocket health expenditure a ten-year exposure","b":"BV1PDdwBpEfb"},{"n":"龙春晓","s":"广州医科大学","t":"基于数据挖掘技术的中老年人互联网使用、衰弱与心血管疾病风险的关联研究","b":"BV1nodwBEESy"},{"n":"龙春晓","s":"广州医科大学","t":"我国慢性病防治政策文本的量化分析——基于政策工具、政策演进和政策主体的三维框架","b":"BV16odwB7EBW"},{"n":"娄雨悦","s":"皖南医科大学","t":"守正与创新：构建中国自主卫生政策知识体系的路径探索","b":"BV1codwBEETf"},{"n":"卢萌","s":"安徽医科大学","t":"A Study on Quality Disparities in Family Doctor Contract Services","b":"BV16odwB7EDy"},{"n":"陆雨轩","s":"安徽医科大学","t":"利益相关者视角下三级公立医院医疗组绩效考核推进策略研究","b":"BV1wRdwBSEZ9"},{"n":"路逸骏","s":"山东第二医科大学管理学院","t":"我国老年人社会参与政策量化研究-基于政策工具与PMC指数的象限分析","b":"BV1kRdwBUEXP"},{"n":"罗琳彬","s":"武汉大学","t":"自主知识体系视域下“健康整合”的理论意蕴与建构逻辑——卫生政策与管理学科的一个标识性概念","b":"BV1hMRsBxErK"},{"n":"罗仪洁","s":"福建医科大学","t":"Network Relationships among Instrumental Activities of Daily Living, Social Networks, and Social Activity Participation in Chinese Older Adults A Network Analysis","b":"BV1QMRsBxENa"},{"n":"吕婷","s":"郑州大学","t":"生育史与生活方式对农村老年女性高血压患者心血管病的协同影响及政策启示","b":"BV16odwB7ENp"},{"n":"吕永芸","s":"昆明医科大学","t":"疾病诊断相关分组付费模式下肺结核住院费用及影响因素研究","b":"BV1hMRsBxErA"},{"n":"马丽娜","s":"福建医科大学卫生","t":"Current Status and Influencing Factors of Digital Divide Among Older Adults in ChinaA Cross-Sectional Analysis of the China Family Panel Studies (CFPS)","b":"BV1pRdwBSE4m"},{"n":"马莎","s":"浙江中医药大学","t":"家庭健康与老年人抑郁、焦虑症状的关联研究 基于中国大陆的横断面调查","b":"BV1rodwB7Ecw"},{"n":"马延涛","s":"首都医科大学","t":"基于贝叶斯网络模型的农村老年高血压高血糖共病的现状、影响因素及风险推理研究","b":"BV1aMRsBxEHo"},{"n":"马妍钰","s":"天津医科大学","t":"我国生育友好型社会建设政策的三维量化评估与优化路径","b":"BV1TkdwBZEwa"},{"n":"马元硕","s":"河北医科大学","t":"Analysis of Factors Influencing Social Withdrawal in Children with Cancer and Its Developmental Process","b":"BV1jKdABGEzp"},{"n":"马元硕、张苏琳、王梓晗、胡洁","s":"河北医科大学","t":"Analysis of Factors Influencing Social Withdrawal in Children with Cancer and Its Developmental Process A Mixed-Methods Study","b":"BV1NwdFB7ECZ"},{"n":"蒙睿","s":"南京医科大学","t":"使用助推策略减少糖分摄入-比较单一与组合助推策略对大学生含糖饮料摄入的影响","b":"BV1kRdwBUEgp"},{"n":"孟俊慧","s":"华中科技大学","t":"“干中学”的断裂与接续：AI嵌入医疗服务的组织悖论与耦合治理——基于XH医院的纵向案例研究","b":"BV1BcdAByEhy"},{"n":"孟锜锋","s":"哈尔滨医科大学","t":"二级及以上公立医院医务人员公共卫生知识关注度现状及影响因素-一项混合方法研究","b":"BV1fcdAByEFn"},{"n":"莫陆宇","s":"浙江中医药大学","t":"医保支付方式改革下的医疗机构医疗策略性调整行为研究——基于中断时间序列分析","b":"BV1w9dwBnEfi"},{"n":"莫玉芳","s":"武汉大学","t":"公立医院人事管理改革的制度逻辑与路径分异——基于深圳市三家公立医院的案例比较分析","b":"BV1BcdAByEvP"},{"n":"莫玉芳","s":"武汉大学","t":"社会保障高质量发展与公立医院医疗服务利用水平耦合协调关系研究","b":"BV1zcdAB1ELy"},{"n":"牟凌霄","s":"郑州大学","t":"Mapping and prioritizing spatial factors of multimorbidity among older adults with hypertension in rural China: evidence from a countywide survey","b":"BV1fLdFBqENo"},{"n":"缪昕如","s":"华东理工大学","t":"基于机器学习我国中老年在职人群抑郁风险识别与预测研究","b":"BV1hMRsBxEDN"},{"n":"倪楠","s":"江汉大学","t":"“You Cannot Cry”: Emotional Labour, Nonverbal Distress, and Institutional Support Gaps Among Palliative Care Practitioners in China — A Qualitative Study","b":"BV1rRdwBUECF"},{"n":"牛浩然","s":"华中科技大学","t":"风险调整后的前瞻性支付改革是否影响结核病的治疗结果","b":"BV1zFdABLEvH"},{"n":"农一鑫","s":"广西医科大学","t":"预期违背视角下现实社交困境对虚拟陪伴深度使用的影响机制探究","b":"BV1H8RsB3EMG"},{"n":"潘嘉禾","s":"南京医科大学","t":"The Relationship between the Motivation for Physical Activity and the Level of Physical Activity among Medical College Students","b":"BV1JFdABjEuC"},{"n":"盘贝芬","s":"北京中医药大学","t":"60-74岁低龄老年人学历对抑郁程度的影响： 自评记忆功能的中介效应","b":"BV1zFdABLEG1"},{"n":"庞明丽","s":"奥克兰大学","t":"Digital gamified intervention for self-management among patients with chronic obstructive pulmonary disease","b":"BV1fFdABLE9G"},{"n":"钱思远","s":"安徽医科大学","t":"基于创新扩散理论的某院大模型病例生成系统案例分析","b":"BV1wRdwBSEzv"},{"n":"钱志维","s":"武汉科技大学","t":"学校周边卷烟零售商密度与中学生吸烟行为的关联研究：基于华中地区的实证分析","b":"BV1fFdABLETX"},{"n":"乔心雨","s":"新疆医科大学","t":"“国考”背景下新疆三级综合医院质量-效率-发展协调发展状况分析","b":"BV1XedwBPE3n"},{"n":"乔心雨","s":"新疆医科大学","t":"新疆中医药服务能力与区域经济水平的耦合协调及空间相关性研究","b":"BV1DedwBAE9R"},{"n":"秦正杨","s":"中国药科大学","t":"整合服务导向下慢病健康管理医保按人头付费模式研究：改革逻辑、案例比较与对策建议","b":"BV1zFdABLE8J"},{"n":"邱梦卓","s":"杭州师范大学","t":"Time-of-day dependent effect of accelerometer-derived physical activity on risks of multimorbidity","b":"BV1wRdwBSEAb"},{"n":"屈香","s":"山东第二医科大学","t":"传染病防控视域下医疗机构医防融合模式效果评估指标体系构建——以山东省为例","b":"BV1BcdAByExS"},{"n":"屈香","s":"山东第二医科大学","t":"传染病防控视域下医防协同医防融合的制度困境与优化机制","b":"BV1BcdAByEso"},{"n":"任伽伽","s":"武汉科技大学","t":"大一学生传染病知信行关系中态度的中介效应-一项结构方程模型分析","b":"BV1BcdAByEeM"},{"n":"任鸿","s":"北京中医药大学","t":"基于“价值-制度-技术”框架的重大工程HIA国际案例研究及启示","b":"BV1n8RsB3EqY"},{"n":"任侨侨","s":"哈尔滨医科大学","t":"数字素养对中国老年人生活满意度的影响：数字化生活空间的中介效应","b":"BV1jndFBNEkF"},{"n":"任维存","s":"武汉大学","t":"医院资源要素组合结构的分析模型构建与应用","b":"BV1CRdwBUEwb"},{"n":"闰浩","s":"中国药科大学","t":"费用转移还是效率提升 基于患者层面费用轨迹的DRG实施效果分析","b":"BV1WRdwBSEFY"},{"n":"桑凌志","s":"华中科技大学","t":"合理化信念视角下癌症终末期患者治疗的决策机制研究","b":"BV1pRdwBSEYF"},{"n":"商雯骊","s":"广州医科大学","t":"基于交叉滞后模型老年人多重慢病与睡眠质量的双向关系研究","b":"BV1BcdAByEQH"},{"n":"邵钰清","s":"上海交通大学","t":"上海市基层康复服务项目评价研究——以慢性肌肉骨骼疼痛为例","b":"BV1pRdwBSEP8"},{"n":"邵钰清","s":"上海交通大学","t":"听力损失严重程度与共病状态对老年听障者康复需求的影响-一项横断面研究","b":"BV1kRdwBUEJd"},{"n":"邵争","s":"南京中医药大学","t":"门诊共济保障对中老年居民医疗服务利用结构的影响及机制研究","b":"BV1QMRsBxEN6"},{"n":"沈浩辉","s":"杭州师范大学","t":"Network Analysis-Driven Machine Learning Model: Identifying High-Cost Stroke Inpatients Using Hospital discharge data","b":"BV1ywdFBLEBe"},{"n":"施雨茹","s":"华中科技大学","t":"卫生政策与管理专业研究生培养现实困境与改革探索","b":"BV1QedwBAE4A"},{"n":"史原翔","s":"杭州师范大学","t":"Mapping Environmental Risk Profiles of Mental Disorders among Children and Adolescents in Yunnan Constructing","b":"BV1LgdABzEDU"},{"n":"宋锦涛","s":"首都医科大学","t":"Mapping Global Research Trends in Machine Learning for Health Management A Bibliometric Study (2007–2025)","b":"BV1hMRsBxEi2"},{"n":"宋锦涛","s":"首都医科大学","t":"北京市城乡居民基本医保筹资现状及公平性分析","b":"BV1QMRsBxEEA"},{"n":"宋锦涛","s":"首都医科大学","t":"基于DEA-Malmquist指数模型的北京市海淀区社区卫生资源配置效率评价","b":"BV13MRsB4EaR"},{"n":"宋锦涛","s":"首都医科大学","t":"山东省冠县农村老年人群三高共病现状、影响因素分析及风险预测模型构建","b":"BV1eARsBfEgP"},{"n":"宋科瑜","s":"山东第一医科大学","t":"紧密型县域医共体改革对乡村医生工作满意度的影响研究-心理契约感知与评价的链式中介作用","b":"BV1n8RsB3EqZ"},{"n":"宋洋洋","s":"西安交通大学","t":"县域医共体政策与居民地方政府信任的关联性研究——基于CFPS2016-2022年四期调查数据的实证考察","b":"BV1zcdAByEc6"},{"n":"宋政珂","s":"山东第一医科大学","t":"基层医疗卫生机构视角下山东省紧密型县域医共体建设成效评价——基于熵权TOPSIS法与RSR法","b":"BV1JZdwBmEXv"},{"n":"苏敏","s":"内蒙古大学","t":"Childhood adversity and lifelong health outcomes in China: a causal analysis using double machine learning","b":"BV1EcdAB1ECf"},{"n":"苏敏","s":"内蒙古大学","t":"共建共享：城镇职工基本医疗保险门诊共济政策对居民健康福祉及其平等性的影响——基于双重机器学习的因果推断","b":"BV1BcdAByEWB"},{"n":"孙佳玥","s":"哈尔滨医科大学","t":"健康科普短视频评价指标体系构建研究","b":"BV1jndFBNEto"},{"n":"孙琳","s":"北京医院","t":"The Dynamic Trends and Causal Effects of Social Participation and Cognitive Function Among Middle-Aged and Older Adults","b":"BV1vGdABTETa"},{"n":"孙倩文","s":"南京中医药大学","t":"传承与嵌入-“乡贤文化”在江苏农村公共卫生治理中的功能复归与制度化路径研究","b":"BV1C9dwBnE8h"},{"n":"孙斯琪","s":"杭州师范大学","t":"浙江省基层医务人员公共服务动机与工作满意度关系研究","b":"BV1PwdFBjEZr"},{"n":"孙晓彤","s":"山东大学","t":"促进儿童家长抗生素合理使用平台的开发与可用性评价","b":"BV1QedwBAE63"},{"n":"孙欣雨","s":"浙江中医药大学","t":"Global Insights and Trends in the Inheritance and Innovation of Traditional Chinese Medicine: A Bibliometric and Visualisation Analysis (2009–2025)","b":"BV1H8RsB3EEq"},{"n":"孙欣雨","s":"浙江中医药大学","t":"Global Insights and Trends in the Inheritance and Innovation of Traditional Chinese Medicine","b":"BV1QedwBAEyB"},{"n":"孙正娜","s":"山东大学","t":"Migrant-Local Differences in the Relationship","b":"BV1QedwBAEhe"},{"n":"孙滋翊","s":"山东第一医科大学","t":"山东省“双通道”药店空间分布及国谈药品配备现状分析","b":"BV1BcdAByEC2"},{"n":"覃婧葳","s":"郑州大学","t":"Impact of Early-Life Educational Inequality on Multimorbidity Among Older Adults with Hypertension","b":"BV1GedwBPEVz"},{"n":"谭莉","s":"川北医学院","t":"什么样的门诊保障更益于居民健康-基于门诊保障形式健康产出的实证研究","b":"BV1igdABzEcD"},{"n":"谭旭彤","s":"北京大学","t":"主治医师职业压力、敬业度与能力自评的相关性研究","b":"BV1zZdwB2EDj"},{"n":"唐碧菡","s":"海军军医大学","t":"高原地区留守儿童健康公平性研究-兄弟姐妹共同居住的保护效应","b":"BV1egdABBEZB"},{"n":"陶丽丽","s":"上海市第六人民医院","t":"基于“1+X+1”整合型儿科服务模式的儿童友好医院建设初探","b":"BV1QMRsBxEM7"},{"n":"陶樱莹","s":"浙江中医药大学","t":"DIP支付改革对冠心病住院费用及公平性影响的实证研究-基于s市医保数据的中断时间序列分析","b":"BV1fLdFBqEWx"},{"n":"滕芷艺","s":"徐州医科大学","t":"免陪照护政策执行的“结构性失衡”困境及对策建议-基于X市试点的史密斯政策执行过程模型分析","b":"BV1vgdABBEXB"},{"n":"田雪云","s":"山东大学","t":"组态视角下我国中医药服务能力与卫生事业耦合协调及提升路径研究","b":"BV13edwBPEdw"},{"n":"田峥","s":"安徽医科大学","t":"安徽省医疗服务韧性时空差异分析","b":"BV1k9dwBJEB9"},{"n":"万乐平","s":"武汉大学","t":"行动者网络视角下数智赋能医防融合-基本逻辑、作用机理与关键路径","b":"BV1DedwBAE97"},{"n":"万梦洁","s":"深圳大学","t":"Development of an explainable machine learning model for predicting depression in adolescent girls with nonsuicidal self injury A cross sectional multicenter study","b":"BV1vgdABBEAj"},{"n":"汪小燕","s":"安徽医科大学","t":"数字融入、老化态度与老年人健康状况的动态关联及作用机制研究——基于交叉滞后与中介效应的实证分析","b":"BV1QMRsBxEAR"},{"n":"汪禹丞","s":"南京医科大学","t":"高BMI与低BMI对骨质疏松风险的影响：系统综述与荟萃分析","b":"BV1zFdABLEEd"},{"n":"王安安","s":"山东第二医科大学","t":"教育治理与青少年心理健康：基于“双减”政策实施效果的实证研究","b":"BV1QMRsBxEhe"},{"n":"王海霞","s":"华中科技大学","t":"The influence of social capital on successful aging in older adults: chain mediation by resilience and self-care","b":"BV1BFdcBqEsi"},{"n":"王皓琦","s":"首都医科大学","t":"北京中小学公共卫生体系建设实证评估","b":"BV1C9dwBJEjP"},{"n":"王红","s":"深圳大学","t":"社会医疗保险与商业健康保险对医疗资源配置的协同效应研究-基于供需双侧视角的分析","b":"BV1dgdABBEPc"},{"n":"王宏艳","s":"天津中医药大学","t":"重大慢病防治适宜技术推广效果评价理论框架研究","b":"BV1n8RsB3E19"},{"n":"王佳宁、周叶轩、孙涛","s":"杭州师范大学","t":"突发公共卫生事件中政策执行偏差：行为分类、生成逻辑与治理路径","b":"BV1k9dwBJEgv"},{"n":"王嘉琳","s":"华中科技大学","t":"我国双相情感障碍患者疾病负担变化趋势及预测分析","b":"BV1k9dwBJEKx"},{"n":"王金凤","s":"山东第二医科大学","t":"华东地区政府医疗卫生支出空间差异及其影响因素研究","b":"BV1vudABuErP"},{"n":"王丽娟","s":"华中科技大学同济医学院","t":"Intrinsic Motivation of Primary Care Physicians and Treatment Outcomes Evidence from Western China","b":"BV13edwBPERw"},{"n":"王璐颖","s":"中国药科大学","t":"我国青年科研人员感知压力和心理特性的调研与分析","b":"BV1aedwBPER9"},{"n":"王明思","s":"哈尔滨医科大学","t":"Disability burden of heart failure in the Association of Southeast Asian Nations, 1990-2023: trends, causes, and efficiency gaps in GBD 2023","b":"BV13uRsBdELz"},{"n":"王仁英","s":"徐州医科大学","t":"智慧健康养老政策对老年人健康效益的影响研究——基于CLASS的追踪调查","b":"BV16FdABjEPN"},{"n":"王绍敏","s":"武汉大学","t":"从生存保障到内生发展-长期护理保险如何重塑家庭发展韧性？","b":"BV1iudABuE7s"},{"n":"王姝","s":"昆明医科大学","t":"中国基层卫生治理的传统-现代传承逻辑与理论框架","b":"BV1FZdwBmEkM"},{"n":"王素贤","s":"郑州大学","t":"2000~2020年河南省人口老龄化程度时空演进分析","b":"BV1zFdABLEbn"},{"n":"王甜甜","s":"安徽医科大学","t":"Configurational pathways for preventing motoric cognitive risk syndrome in rural older adults","b":"BV1vudABuER5"},{"n":"王欣雨","s":"杭州师范大学","t":"中国多维健康贫困的动态演变与脆弱特征画像研究","b":"BV1vudABuER7"},{"n":"王馨蓉","s":"山东第一医科大学","t":"政策协同视角下国家集中带量采购药品与基本药物目录的衔接程度分析。山东第一医科大学医疗保障学院图书情报专业在读研究生，硕士一年级，研究方向为医学情报研究。","b":"BV1k9dwBJEwB"},{"n":"王学梦","s":"浙江中医药大学","t":"“祛躯体化”：学校社工信箱的亲社会联结省思","b":"BV1ondFBPE4z"},{"n":"王娅楠","s":"南方医科大学","t":"基于SPO理论的高校健康管理能力评价体系研究","b":"BV1zFdABLEYp"},{"n":"王伊凡","s":"山东第二医科大学","t":"慢性病共病对中老年人抑郁水平的影响：有调节的中介模型","b":"BV1zFdABLE4p"},{"n":"王宇潇","s":"山西医科大学","t":"基于Kano模型的农村老年人养老服务需求分析","b":"BV1QadwBeEiy"},{"n":"王雨鑫","s":"哈尔滨医科大学","t":"基于社会网络分析法的医患信任提升策略研究","b":"BV1GadwBvEkc"},{"n":"尉大为","s":"中国疾控中心慢病中心","t":"Analysis of spatio-temporal differentiation and key influencing factors of global IHD from 1990 to 2021","b":"BV1rRdwBUECh"},{"n":"魏苏璟","s":"华中科技大学同济医学院","t":"医疗卫生领域人工智能应用的政策逻辑与治理框架研究","b":"BV1dudABuEY5"},{"n":"魏霞","s":"北京大学","t":"医务人员慢性病医防融合知信行现状与影响机制研究","b":"BV1kQdwBDED5"},{"n":"魏真","s":"山东大学","t":"校园欺凌与初中生抑郁的动态关联-一项基于潜在剖面与潜在转变分析的纵向研究","b":"BV1GadwBvEi6"},{"n":"温馨宇","s":"温州医科大学","t":"The Association Between Health Literacy and Out of Pocket Health Expenditure: Exploring Heterogeneity by Chronic Disease in Zhejiang, China","b":"BV1huRsBRE69"},{"n":"文秀芹","s":"洛浦县人民医院","t":"边疆县域卫生治理的自主探索","b":"BV1dudABuEgK"},{"n":"吴昊","s":"武汉科技大学","t":"旅行团导游与游客传染病预防行为差异及驱动机制研究","b":"BV1QadwBeEvX"},{"n":"吴嘉明","s":"福建医科大学","t":"基于 CFPS 2022的中国老年人社会价值观、社会信任与抑郁关联性研究：一项网络分析","b":"BV1LkRsBAEud"},{"n":"吴欣颐、佟欣","s":"浙江中医药大学","t":"数字赋能下我国长护险监管的问题与治理路径研究","b":"BV1CQdwBDET3"},{"n":"吴欣颐、张宇槐","s":"浙江中医药大学","t":"在协同治理下，多元化激励能否有效改善家庭医生签约服务？一个四方演化博弈方法","b":"BV15kRsBAEQ7"},{"n":"吴钰涵","s":"广州医科大学","t":"基于BERTopic的我国基本医保门诊保障研究主题与演化分析","b":"BV1vudABuE6J"},{"n":"吴钰涵","s":"广州医科大学","t":"基于LDA主题模型的我国省级免陪照护政策文本分析","b":"BV1iudABuEvx"},{"n":"吴征玥","s":"广州医科大学","t":"DIP Payment Reform in Cross-Regional Inpatient Care, Medical Cost Containment, and Patient Financial Burden","b":"BV1vudABuE66"},{"n":"吴芷涵","s":"首都医科大学","t":"中国中老年人自来水使用与关节炎的关联：基于CHARLS多轮随访数据的证据","b":"BV1wQdwBQE1n"},{"n":"武骏","s":"安徽医科大学","t":"Urban-rural differences in depressive symptoms and related factors among employed middle-aged and older adults","b":"BV1oudABuEP1"},{"n":"武星利","s":"江西科技师范大学","t":"基于系统动力学的公立医院补偿机制优化分析","b":"BV1XadwBeEGN"},{"n":"夏欣仪","s":"深圳大学","t":"从早期逆境到非自杀性自伤-抑郁青少年述情障碍传导路径的性别异质性网络分析","b":"BV1YadwBvEcu"},{"n":"相博雯","s":"山东第二医科大学","t":"“生命八要素”在心肾代谢疾病连续健康管理中的应用价值研究：基于前瞻性队列实证证据视频","b":"BV1RkRsBAEZ9"},{"n":"项静怡","s":"杭州师范大学","t":"Identification and Prediction of Multidimensional Health Phenotypes in Community-Dwelling Older Adults: A Latent Profile Analysis and Machine Learning Approach","b":"BV1w8RsBGEx3"},{"n":"肖靓靓","s":"浙江中医药大学","t":"2008 2023年中国糖尿病疾病负担测算及2028年预测：基于国家卫生服务调查和2023年全球疾病负担研究的建模分析","b":"BV1kQdwBDE7P"},{"n":"谢可盈","s":"佛山大学","t":"基于机器学习与SHAP的老年人口腔健康行为预测模型及可解释性研究","b":"BV1GadwBvEDv"},{"n":"谢思思","s":"山东第二医科大学","t":"疾病相关诊断分组的SWOT分析","b":"BV1YVdABiEkR"},{"n":"邢若斌","s":"首都医科大学","t":"北京市居民医保筹资动态调整机制研究","b":"BV1kQdwBDELe"},{"n":"徐梦圆","s":"山东第二医科大学","t":"农村空巢老年人自感活动能力与抑郁的关系：短视频成瘾和心理弹性的平行中介作用","b":"BV1CQdwBDEKH"},{"n":"徐梦圆","s":"山东第二医科大学","t":"老年慢病共病与抑郁症状的关系：心理弹性和睡眠质量的链式中介作用","b":"BV1AQdwBQE6u"},{"n":"徐梦圆","s":"山东第二医科大学","t":"山东省乡村医生的数字技术压力：一项基于TOE模型的问卷调查分析","b":"BV1kQdwBDE2s"},{"n":"徐若昕","s":"汕头大学医学院附属粤北人民医院","t":"Mapping Clinical Intent in Internet","b":"BV1eVdABiEWa"},{"n":"徐姗姗","s":"南通大学","t":"Factors Affecting the Supply of Long-Term Care Services in China A Supply-Side Perspective","b":"BV1eVdABiE5y"},{"n":"徐诗涵","s":"广州医科大学","t":"数智医疗对基层医生诊疗行为的影响及效果：一项范围综述","b":"BV1n8RsB3Edb"},{"n":"徐甜鸽","s":"郑州大学","t":"郑州大学 家庭医生签约服务政策背景下血压监测对高血压患者健康的影响","b":"BV1CQdwBDENk"},{"n":"徐同庆","s":"安徽医科大学","t":"Explainable and actionable machine learning models of death and hospitalization among hypertensive cohorts","b":"BV1YVdABiEeG"},{"n":"徐文莉","s":"江西科技师范大学","t":"Association Between Daytime Napping Duration and Risk of Metabolic Syndrome A Systematic Review and Meta-Analysis","b":"BV1eVdABiEWz"},{"n":"徐艳","s":"中国药科大学","t":"天津慢性病按人头付费下健康服务整合模式概述与改革创新-基于糖尿病试点改革","b":"BV19VdABiEeZ"},{"n":"徐宇阳","s":"东南大学","t":"门诊老年低价值诊断服务：指标体系、规模测度、成因分析","b":"BV1w8RsBGETs"},{"n":"徐钰欣","s":"华中科技大学","t":"三医协同如何驱动国谈创新药入院？基于激励相容与价值共创的分析","b":"BV15kRsBAEQL"},{"n":"徐致远","s":"复旦大学","t":"我国超大城市紧密型城市医疗集团的典型模式比较研究","b":"BV1YVdABiEbR"},{"n":"薛孟瑶","s":"福建医科大学","t":"非药物干预政策严格度对COVID-19病例增长率的动态影响研究","b":"BV1VadwBvEuj"},{"n":"鄢梦雨","s":"华中科技大学同济医学院","t":"Know Much Do Better Evidence From the Difference of Healthy Lifestyle Between","b":"BV1XadwBeEhs"},{"n":"燕梦雨","s":"复旦大学","t":"上海市住院医师规范化培训学员加班强度与职业认同感的关系-工作投入的中介作用","b":"BV1eVdABiEWm"},{"n":"阳宛谕","s":"海南医科大学","t":"基于问题系统分析的老年人医疗保障多主体及其利益倾向","b":"BV1GadwBvEaR"},{"n":"杨昊鹏","s":"北京协和医学院","t":"价值医疗导向下的中国公立医院老年医学科发展现状研究-基于全国147家医疗机构的实证调研","b":"BV1H8RsB3E4i"},{"n":"杨洁","s":"杭州师范大学","t":"数字化能力与基层医疗卫生机构组织韧性的关系研究","b":"BV1GadwBvEDy"},{"n":"杨柳","s":"浙江中医药大学","t":"2008-2023年中国居民缺血性心脏病疾病负担现状及趋势研究","b":"BV1GadwBvEd3"},{"n":"杨梦娇","s":"山东第二医科大学","t":"公立医院高质量发展背景下\"互联网+医疗健康\"政策文本量化分析——基于PMC指数模型","b":"BV1kQdwBDEkn"},{"n":"杨瑞","s":"上海交通大学医学院","t":"睡眠时长与睡眠质量对抑郁症状的独立及联合效应：一项针对听力损失老年人的横断面研究","b":"BV1LkRsBPErE"},{"n":"杨珊珊","s":"郑州大学","t":"Temporal trends in depression and psychosocial determinants","b":"BV1XadwBeEGR"},{"n":"杨珊珊","s":"郑州大学","t":"The mediating roles of social support, self-esteem, and perceived discrimination","b":"BV1GadwBvEdT"},{"n":"杨士鋆","s":"山东大学","t":"老年人握力、步速与轻度认知障碍和具体认知功能的双向关联研究","b":"BV1LkRsBAE5s"},{"n":"杨双瑜","s":"复旦大学","t":"体力活动对中老年血糖异常人群长期医疗费用的影响研究","b":"BV1eVdABiEK3"},{"n":"杨婷婷","s":"汕头大学医学院","t":"Evaluating Service Journey Quality in Chronic Care: Implications for Patient Satisfaction and Behavioral Intentions","b":"BV1vkRsBAEXV"},{"n":"杨妤菲","s":"杭州师范大学","t":"叙事医学互动视角下友好型医疗环境对患者及家庭赋能支持的影响机制研究感知性抗倦怠的调节作用","b":"BV1A9dwBnEMv"},{"n":"姚如玉","s":"宁夏医科大学","t":"基于可解释机器学习的我国中老年人卫生服务利用影响因素分析","b":"BV1ADdwBpE88"},{"n":"叶常春","s":"杭州师范大学","t":"空气污染对中国政府卫生支出的叠加效应——基于地理探测器的空间证据","b":"BV1GadwBvEDX"},{"n":"叶惠子","s":"粤北人民医院","t":"数字健康技术背景下在线问诊研究的全球趋势与主题演化","b":"BV1XadwBeEPJ"},{"n":"叶俊","s":"温州医科大学","t":"数智化医疗场域中医护关怀困境的生成机制与治理路径-基于同理心双维结构的分析","b":"BV18qdwBFExG"},{"n":"叶俊/柳怡","s":"温州医科大学","t":"程序性共识视域下数智化医疗知情同意的困境与优化路径","b":"BV1PDdwBpEYf"},{"n":"叶卿云","s":"复旦大学附属眼耳鼻喉科医院","t":"上海中心城区医患双方对远程医疗服务偏好研究：基于离散选择实验","b":"BV1CDdwBHEB7"},{"n":"叶贻忠","s":"南方医科大学","t":"社会经济地位、抑郁与老年虚弱状况的关系：基于17个国家的横断面证据","b":"BV1n8RsB3Ed5"},{"n":"易春良","s":"石河子大学","t":"新医改以来我国DRGDIP研究现状与热点分析","b":"BV1CDdwBHE18"},{"n":"易春良","s":"石河子大学","t":"基于DRG的二级综合医院医疗服务绩效评价","b":"BV1PDdwBpELD"},{"n":"尹雪峰","s":"郑州大学","t":"农村老年心血管疾病人群晚年的健康生活方式和全因死亡的关联-来自中国北方生活方式医学队列的证据","b":"BV1DqdwBcEAp"},{"n":"余晔","s":"皖南医科大学第一附属、武汉大学","t":"社交媒体对老年人健康认知影响研究基于charls2020实证研究","b":"BV1YVdABiECE"},{"n":"俞维肖","s":"杭州师范大学","t":"职业发展与家庭角色的双重影响；女性职业人群抑郁症状的网络结构及关键路径","b":"BV19GdABTEdb"},{"n":"喻少杰","s":"海军军医大学","t":"广州市某区青年人童年不良经历与抑郁症状的关联研究","b":"BV1gqdwBwEpa"},{"n":"詹坤烨","s":"深圳大学","t":"突破平均效应局限-基于机器学习挖掘稳定社会参与对中国中老年人新发抑郁的防护效应及脆弱获益人群","b":"BV1eGdABTEVH"},{"n":"张宝仪","s":"华中科技大学","t":"政策疏离感对居民家庭医生服务签约意愿的影响研究","b":"BV13edFBxEgo"},{"n":"张弛","s":"复旦大学","t":"海南省医疗资源配置、居民健康需要与卫生服务利用的耦合情况及空间分布特征分析","b":"BV1LkRsBAEcs"},{"n":"张东杰","s":"郑州大学","t":"我国中医医疗服务能力与高质量发展水平耦合协调分析","b":"BV1xwdFB7En1"},{"n":"张峰","s":"江西科技师范大学","t":"“十二五”-“十四五”期间我国优质医疗资源时空分布与演变特征分析","b":"BV1SqdwBcE92"},{"n":"张杭婧","s":"华中科技大学","t":"SORGS干预能否激活主动健康？基于SOR理论的慢性病群组化随机对照试验","b":"BV1RGdABTEqW"},{"n":"张环宇","s":"复旦大学","t":"较高的风险感知是否会引发更强的健康行为意向？ 对未确诊的糖尿病前期及糖尿病患者绝对风险感知与相对风险感知的比较","b":"BV1CDdwBHERw"},{"n":"张慧芳","s":"郑州大学","t":"负性生活事件与生活方式对成年人身心共病的影响及其健康管理启示","b":"BV15kRsBAE24"},{"n":"张佳琪","s":"山东第二医科大学","t":"智慧医疗服务现状评估及对策建议-以山东省为例","b":"BV1DqdwBcEGt"},{"n":"张婧","s":"兰州大学","t":"古巴“医防融合”医学教育模式对我国公卫医师规培与基层医疗的启示","b":"BV1LkRsBAEuY"},{"n":"张凯旋","s":"兰州大学","t":"政策工具与全周期视角下我国高血压防控政策分析","b":"BV1RGdABTEgT"},{"n":"张利江","s":"河南医药大学","t":"国内公立医院医生薪酬与绩效关联研究","b":"BV1k9dwBJEsR"},{"n":"张瑞鑫","s":"山东第二医科大学","t":"潍坊市育龄期女性生育意愿的机器学习预测模型与影响因素研究","b":"BV1ikRsBAEct"},{"n":"张诗敏","s":"山东大学","t":"Sex Differences in the Association of Physical Activity Trajectories and Low Back Pain A Prospective Cohort Study","b":"BV1aMRsBxEnV"},{"n":"张诗敏、王含玉","s":"山东大学","t":"山东省农村老年人主观认知功能和社会资本联合发展轨迹与自杀意念关系研究","b":"BV13uRsBdEBS"},{"n":"张苇乐","s":"内蒙古大学","t":"主动边缘人-家庭医生签约服务制度的执行困境与路径选择-基于H市的案例研究","b":"BV1DqdwBcEH3"},{"n":"张文婷","s":"郑州大学","t":"屏幕时间与农村高血压老年人躯体、心理和认知多重疾病的纵向关联及差异","b":"BV1aMRsBsEA7"},{"n":"张曦宇","s":"北京大学","t":"Tracking the progress of maternal pertussis vaccination coverage among upper-middle- and high-income countries and territories — a systematic review and modeling study","b":"BV1SqdwBcE4L"},{"n":"张宪琦","s":"山东第二医科大学","t":"Depressive Symptoms and Short Video Addiction among Rural Middle-aged and Older Adults with Chronic Disease","b":"BV1gqdwBwEWo"},{"n":"张欣怡","s":"武汉大学","t":"我国精神疾病住院医保支付政策：关键环节、典型模式与优化路径","b":"BV1PDdwBpE5U"},{"n":"张馨予","s":"天津医科大学","t":"Association of depression and gastrointestinal diseases a three-stage study","b":"BV1RGdABTEtQ"},{"n":"张薰尹","s":"杭州师范大学","t":"Device-quantified vigorous intermittent lifestyle physical activity and risk of incident depression and anxiety among non-exercising adults","b":"BV1uqdwBwEop"},{"n":"张妍","s":"哈尔滨医科大学","t":"A Study on Influencing Factors of Elderly Healthcare Products Consumption Behaviour Based on the DEMATEL ISM Mode","b":"BV1LndFBNEXX"},{"n":"张耀丹","s":"山西医科大学","t":"高校女大学生健康画像构建及健康促进策略研究","b":"BV1RkRsBcEV2"},{"n":"张亦弛","s":"山东大学","t":"Community home-based elderly care services utilization and cognitive function among older adults","b":"BV1RGdABTEgu"},{"n":"张雨燕子","s":"中国药科大学","t":"精神分裂症家庭照护者健康相关生命质量及负担的测量与分析","b":"BV1LkRsBAEFD"},{"n":"张钰瑶","s":"新疆医科大学","t":"基于CRITIC-TOPSIS-RSR法的三级综合医院学科评估研究","b":"BV1DqdwBcEVq"},{"n":"张钰瑶","s":"新疆医科大学","t":"政策工具视角下我国公立医院绩效考核政策量化分析","b":"BV1SqdwBcEtz"},{"n":"张悦菡","s":"天津医科大学","t":"从人工主观到算法一致？大语言模型辅助政策量化评分的方法学可靠性验证","b":"BV1DqdwBwE4W"},{"n":"张泽惠","s":"山东第二医科大学","t":"Temporal trends and attributable risk analysis ofmental disorders burden for children and adolescents","b":"BV1SqdwBcEdN"},{"n":"张志远","s":"山东第二医科大学","t":"感知社会支持如何影响大学生心理健康：智能手机成瘾与睡眠质量的相互作用","b":"BV1WDdwBpEem"},{"n":"张子彦","s":"福建医科大学","t":"慢性乙肝患者自我管理行为纵向轨迹及预测因素分析","b":"BV1gqdwBwE41"},{"n":"章晗","s":"华中科技大学医药卫生管理学院","t":"基于LDA和DTM模型的我国人工智能+医疗政策趋势演变分析","b":"BV19GdABTE23"},{"n":"章佳影","s":"浙江中医药大学","t":"2009-2021浙江卫生总费用及其影响因素分析","b":"BV1QvdwBaEAj"},{"n":"赵晓彤","s":"广州医科大学","t":"基于机器学习的华南地区老年慢病共病组合的行为特征识别与心理衰弱风险预测的实证研究","b":"BV1DvdwBaEGq"},{"n":"赵兴容","s":"贵州医科大学","t":"预付制改革背景下医保基金运行风险的治理逻辑与防空路径","b":"BV1avdwBYEPY"},{"n":"赵雅欣","s":"西北农林科技大学","t":"互联网使用能否实现预防服务的公平性红利 基于机会获取与健康福利的城乡比较","b":"BV1vkRsBAEbU"},{"n":"赵子婷","s":"南京中医药大学","t":"健康治理现代化视角下老年人多维健康画像转移与医疗服务利用研究","b":"BV1eGdABTEUs"},{"n":"郑海婷","s":"山西医科大学","t":"基于健康信念模型的山西省高校女生“两癌”预防健康干预及分层效果研究","b":"BV1vkRsBAEQ2"},{"n":"郑晓怡","s":"山西医科大学","t":"我国老年人口腔健康相关政策的量化评价——基于PMC指数模型","b":"BV1nZdwBmE37"},{"n":"钟璐佟","s":"成都医学院","t":"Life course adverse experiences, socioeconomic status, and chronic kidney disease risk in middle aged and older adults evidence from the CHARLS","b":"BV1k9dwBJEsx"},{"n":"钟思思","s":"华中科技大学","t":"Network structure of chronic conditions and continuity of care in high-altitude regions: Evidence from a claims-based study in Southwest China","b":"BV1CDdwBHExp"},{"n":"周芳宇、王彧","s":"哈尔滨医科大学","t":"更年期女性健康不平等的多源质性研究","b":"BV13vdwBYEGv"},{"n":"周娜","s":"北京大学","t":"医改背景下公立医院竞争行为如何识别-基于DIP改革的经验观察与方法反思","b":"BV1eGdABTEVp"},{"n":"周晴","s":"杭州师范大学","t":"基于TOPSIS法的县域医共体组织韧性评价研究","b":"BV1hvdwBYE1S"},{"n":"周树东","s":"涟水县疾病预防控制中心","t":"建立健康发展体系 形成中国特色经验","b":"BV16ZdwB2EFF"},{"n":"周秀秀","s":"华中科技大学","t":"Does social participation buffer the association? Adverse childhood experiences and 10-year depression symptom trajectories in middle-aged and older Chinese","b":"BV1BFdcBqEC3"},{"n":"周彦希","s":"苏州城市学院","t":"主动健康视角下的老年人肌少症防控科普实践-从不敢动到慧生活","b":"BV1QvdwBaELb"},{"n":"周叶轩","s":"杭州师范大学","t":"突发公共卫生事件冲击下城市防控绩效的组态条件：基于23个中国城市数据的QCA视角","b":"BV13vdwBYEhn"},{"n":"周颖、程林、黄琳、袁俊、马钰","s":"广州市疾病预防控制中心（广州市卫生监督所）","t":"基于政策工具-政策目标-政策力度三维框架的我国健康影响评估政策量化研究","b":"BV1BcdAByEe2"},{"n":"朱东方","s":"郑州大学","t":"国家区域医疗中心交易费用测度与应对策略","b":"BV13vdwBYE7M"},{"n":"朱静","s":"山东第二医科大学","t":"The relationship between disability and quality of life among older adults the roles of sleep, depression, and living arrangements","b":"BV1kDdwBHEfi"},{"n":"朱娟芳","s":"海军军医大学","t":"Suicidal Thoughts and Behaviors Among Chinese Adolescents in Relation to Negative Life Events","b":"BV1hvdwBYEqM"},{"n":"朱派毅","s":"中山大学肿瘤防治中心","t":"肿瘤专科医务人员大语言模型使用行为影响因素研究-基于UTAUT模型的混合方法分析","b":"BV1hvdwBYERS"},{"n":"朱智优","s":"杭州师范大学","t":"社区孤老人群健康需求及其影响因素研究-一项基于证据图谱的横断面调查","b":"BV1ikRsBAEcU"},{"n":"祖艺","s":"天津医科大学","t":"我国医疗器械创新与产业发展综合评价","b":"BV1LkRsBAEam"}];
+let cloudFilteredVideos = cloudVideos;
+let cloudShownCount = 0;
+const CLOUD_PAGE_SIZE = 30;
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+function highlightKeyword(text, keyword) {
+  if (!keyword) return escapeHtml(text);
+  const safeText = escapeHtml(text);
+  const safeKw = escapeHtml(keyword);
+  // 大小写不敏感 + 转义正则元字符
+  const escRegex = safeKw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  try {
+    const re = new RegExp('(' + escRegex + ')', 'gi');
+    return safeText.replace(re, '<span class="cv-hl">$1</span>');
+  } catch (e) {
+    return safeText;
+  }
+}
+
+function renderCloudBatch() {
+  const list = document.getElementById('cloudVideoList');
+  const kw = (document.getElementById('cloudSearch').value || '').trim();
+  const total = cloudFilteredVideos.length;
+  const end = Math.min(cloudShownCount + CLOUD_PAGE_SIZE, total);
+  const frag = document.createDocumentFragment();
+  for (let i = cloudShownCount; i < end; i++) {
+    const v = cloudFilteredVideos[i];
+    const row = document.createElement('a');
+    row.className = 'cv-row';
+    row.href = 'https://www.bilibili.com/video/' + encodeURIComponent(v.b);
+    row.target = '_blank';
+    row.rel = 'noopener noreferrer';
+    row.innerHTML =
+      '<span class="cv-idx">' + (i + 1).toString().padStart(3, '0') + '</span>' +
+      '<span class="cv-name">' + highlightKeyword(v.n, kw) + '</span>' +
+      '<span class="cv-school">' + highlightKeyword(v.s, kw) + '</span>' +
+      '<span class="cv-title">' + highlightKeyword(v.t, kw) + '</span>' +
+      '<span class="cv-icon">↗</span>';
+    frag.appendChild(row);
+  }
+  list.appendChild(frag);
+  cloudShownCount = end;
+  // 加载更多按钮的显示
+  const wrap = document.getElementById('cloudLoadMoreWrap');
+  const remaining = total - cloudShownCount;
+  if (remaining > 0) {
+    wrap.style.display = 'block';
+    document.getElementById('cloudRemainingCount').textContent = '（还有 ' + remaining + ' 条）';
+  } else {
+    wrap.style.display = 'none';
+  }
+}
+
+function loadMoreCloudVideos() { renderCloudBatch(); }
+
+function filterCloudVideos() {
+  const kw = (document.getElementById('cloudSearch').value || '').trim().toLowerCase();
+  if (!kw) {
+    cloudFilteredVideos = cloudVideos;
+  } else {
+    cloudFilteredVideos = cloudVideos.filter(function(v) {
+      return v.n.toLowerCase().indexOf(kw) >= 0
+          || v.s.toLowerCase().indexOf(kw) >= 0
+          || v.t.toLowerCase().indexOf(kw) >= 0;
+    });
+  }
+  // 重置展示
+  document.getElementById('cloudVideoList').innerHTML = '';
+  cloudShownCount = 0;
+  // 计数 / 无结果提示
+  const filterCount = document.getElementById('cloudFilterCount');
+  const noResult = document.getElementById('cloudNoResult');
+  if (kw) {
+    filterCount.textContent = '匹配 ' + cloudFilteredVideos.length + ' 条 / 共 ' + cloudVideos.length + ' 条';
+  } else {
+    filterCount.textContent = '';
+  }
+  if (cloudFilteredVideos.length === 0) {
+    noResult.style.display = 'block';
+    document.getElementById('cloudLoadMoreWrap').style.display = 'none';
+  } else {
+    noResult.style.display = 'none';
+    renderCloudBatch();
+  }
+}
+
+function initCloudVideos() {
+  const total = document.getElementById('cloudTotal');
+  if (total) total.textContent = cloudVideos.length;
+  if (document.getElementById('cloudVideoList')) {
+    renderCloudBatch();
+  }
+}
+// 在页面 DOM ready 之后初始化
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCloudVideos);
+} else {
+  initCloudVideos();
+}
 </script>
 </body>
 </html>
